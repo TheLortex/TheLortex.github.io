@@ -128,7 +128,7 @@
         var dep = Math.floor(Math.random()*counts[l]);
         primWorker.postMessage({
             graph: computeGraph(),
-            starting_layer: l,
+            starting_layer: 2*l,
             starting_point: dep,
             n_layers:n_layers,
             counts:counts
