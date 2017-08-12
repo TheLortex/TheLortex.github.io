@@ -24,6 +24,17 @@
 
     for (var i = 0; i < n_layers; i++) {
         var newLayer = new Layer();
+        if (i == n_layers - 1) {
+            var text = new PointText(view.size * [0.5, 0.5]);
+            text.justification = 'center';
+            text.fillColor = 'white';
+            text.strokeColor = 'black';
+            text.font = 'Roboto Thin';
+            text.content = 'Lortex.org';
+            text.fontSize = 200;
+
+        }
+        var newLayer = new Layer();
         newLayer.applyMatrix = false;
         layers.push(newLayer);
 
@@ -146,7 +157,7 @@
     function onFrame(event) {
         for (var i = 0; i < 2*n_layers; i++) {
             layers[i].position.y += sizes[Math.floor(i/2)];
-            //layers[i].position.x += sizes[i]/20 * Math.cos((event.time/30.0) * 2*Math.PI);
+            layers[i].position.x += sizes[Math.floor(i/2)]/20 * Math.cos((event.time/30.0) * 2*Math.PI);
 
             if (layers[i].bounds.top > view.size._height) {
                 console.log('layer '+i+' jumped!');
