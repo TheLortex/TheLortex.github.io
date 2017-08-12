@@ -1,1 +1,153 @@
-What the duck
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Lortex.org: vous n'aviez rien d'autre à faire?</title>
+  <script type="text/javascript" src="js/paper/paper-full.min.js"></script>
+  <script type="text/paperscript" canvas="canvas">
+    var counts = [30,20,10,10,10,10,10,10,10,10,20];
+    var sizes = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1];
+
+    var path = new Path.Circle({
+        center: [0, 0],
+        radius: 10,
+        fillColor: 'white',
+        strokeColor: 'black'
+    });
+    var symbol = new Symbol(path);
+
+    var layers = [];
+
+    var position_points_in_layers = [];
+    var n_layers = 10;
+
+
+    for (var i = 0; i < n_layers; i++) {
+        var newLayer = new Layer();
+        newLayer.applyMatrix = false;
+        layers.push(newLayer);
+
+        var position_points = [];
+        for (var j = 0; j < counts[i]; j++) {
+            var center = (Point.random() - [0.05, 0]) * view.size * [1.05, 1];
+            position_points.push(center);
+
+        	var placedSymbol = symbol.place(center);
+        	placedSymbol.scale(sizes[i]);
+        }
+
+        position_points_in_layers.push(position_points);
+        position_points_in_layers.push(position_points);
+
+        var copyLayer = new Layer();
+        copyLayer.applyMatrix = false;
+        newLayer.copyTo(copyLayer);
+        layers.push(copyLayer);
+
+        copyLayer.position.y -= view.size._height;
+    }
+
+
+    console.log(layers[0].position);
+    console.log(view.size/2);
+
+    var lines = [];
+    var lines_layer = new Layer();
+
+
+    function gimme_global_position(layer, point) {
+        //layer = 2*Math.floor(layer/2);
+       // return position_points_in_layers[layer][point] + [0, layers[layer].position.y-y0[layer]];//lines_layer.globalToLocal(position_points_in_layers[layer][point]);
+
+       return layers[layer].localToGlobal(position_points_in_layers[layer][point]);
+    }
+
+    function computeGraph() {
+        var graph = [];
+        for (var layer1 = 0; layer1 < 2*n_layers; layer1++) {
+            graph.push([]);
+            for (var layer2 = 0; layer2 < 2*n_layers; layer2++) {
+                graph[layer1].push([]);
+                for (var p1 = 0; p1 < counts[Math.floor(layer1/2)]; p1++) {
+                    graph[layer1][layer2].push([]);
+                    for (var p2 = 0; p2 < counts[Math.floor(layer2/2)]; p2++) {
+                        var position_1 = gimme_global_position(layer1, p1);
+                        var position_2 = gimme_global_position(layer2, p2);//
+                        var distance = Math.pow(position_1.x - position_2.x,2) + Math.pow(position_1.y - position_2.y, 2) + Math.pow((sizes[Math.floor(layer1/2)]-sizes[Math.floor(layer2/2)])*1000,2);
+                        graph[layer1][layer2][p1].push(distance);
+                    }
+                }
+            }
+        }
+        return graph;
+    }
+
+    var primWorker = new Worker('prim.js');
+    primWorker.onmessage = function(e) {
+    //    console.log(e.data);
+        var p1 = gimme_global_position(e.data[0], e.data[1]);//layers[e.data[0]].localToGlobal(position_points_in_layers[e.data[0]][e.data[1]]);
+        var p2 = gimme_global_position(e.data[2], e.data[3]);
+        lines.push([e.data, new Path.Line(p1,p2)]);
+        lines[lines.length-1][1].strokeColor = new Color(1, 1, 1, 0.050005);
+    }
+
+    primWorker.postMessage({
+        graph: computeGraph(),
+        starting_layer: 18,
+        starting_point: 1,
+        n_layers:n_layers,
+        counts:counts
+    });
+
+    function distance(p1, p2) {
+        return Math.sqrt(Math.pow(p1.x-p2.x,2)+Math.pow(p1.y-p2.y,2));
+    }
+
+    //console.log(layers[10].globalMatrix);
+    function onFrame(event) {
+        for (var i = 0; i < 2*n_layers; i++) {
+            layers[i].position.y += sizes[Math.floor(i/2)];
+            //layers[i].position.x += sizes[i]/20 * Math.cos((event.time/30.0) * 2*Math.PI);
+
+            if (layers[i].bounds.top > view.size._height) {
+                console.log('layer '+i+' jumped!');
+                layers[i].position.y -= 2*view.size._height;
+            }
+    	}
+
+        var to_delete = [];
+        for (var i in lines) {
+            var data = lines[i];
+            var p1 = gimme_global_position(data[0][0], data[0][1]);
+            var p2 = gimme_global_position(data[0][2], data[0][3]);
+            if (data[1].strokeColor.alpha < 1 && (Math.round(1000000*data[1].strokeColor.alpha) % 10 == 5)) {
+                data[1].strokeColor.alpha += 0.01;
+            } else if (data[1].strokeColor.alpha >= 1) {
+                data[1].strokeColor.alpha = 1-0.000001;
+            } else if (data[1].strokeColor.alpha > 0){
+                data[1].strokeColor.alpha -= 0.03;
+            }
+
+            if (distance(p1,p2) > view.size._height || data[1].strokeColor.alpha == 0) {
+                to_delete.push(i);
+            } else {
+                data[1].firstSegment.point = p1;
+                data[1].lastSegment.point = p2;
+            }
+        }
+        for (var i = to_delete.length-1; i >= 0; i--){
+            lines[to_delete[i]][1].removeSegments();
+            lines.splice(to_delete[i],1);
+        }
+    }
+
+    function onResize(event) {
+
+    }
+  </script>
+
+</head>
+<body style="margin:0; width: 100vw; height: 100vh; background-color: #163851; overflow: hidden">
+    <canvas id="canvas" style="width: 100%; height: 100%; overflow: hidden" resize></canvas>
+</body>
+</html>
