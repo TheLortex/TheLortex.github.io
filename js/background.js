@@ -76,7 +76,7 @@ function gimme_global_position(layer, point) {
 // The worker takes the positions in input, and computes the minimal spanning
 // tree of the points by the prim algorithm, yielding each edge as soon as it's
 // found.
-var primWorker = new Worker('prim.js');
+var primWorker = new Worker('js/prim.js');
 
 // an edge has been generated, time to show it.
 primWorker.onmessage = function(e) {
