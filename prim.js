@@ -1,9 +1,31 @@
 onmessage = function(e) {
     console.log('Working!');
-    live_prim(e.data.graph, e.data.starting_layer, e.data.starting_point, e.data.n_layers, e.data.counts);
+    live_prim(e.data.positions, e.data.starting_layer, e.data.starting_point, e.data.n_layers, e.data.counts, e.data.sizes);
 }
 
-function live_prim(graph, starting_layer, starting_point, n_layers, counts) {
+function computeGraph(positions, n_layers, counts, sizes) {
+    var graph = [];
+    for (var layer1 = 0; layer1 < 2*n_layers; layer1++) {
+        graph.push([]);
+        for (var layer2 = 0; layer2 < 2*n_layers; layer2++) {
+            graph[layer1].push([]);
+            for (var p1 = 0; p1 < counts[Math.floor(layer1/2)]; p1++) {
+                graph[layer1][layer2].push([]);
+                for (var p2 = 0; p2 < counts[Math.floor(layer2/2)]; p2++) {
+                    var position_1 = positions[layer1][p1];
+                    var position_2 = positions[layer2][p2];
+                    var distance = Math.pow(position_1.x - position_2.x,2) + Math.pow(position_1.y - position_2.y, 2) + Math.pow((sizes[Math.floor(layer1/2)]-sizes[Math.floor(layer2/2)])*1000,2);
+                    graph[layer1][layer2][p1].push(distance);
+                }
+            }
+        }
+    }
+    return graph;
+
+}
+
+function live_prim(positions, starting_layer, starting_point, n_layers, counts, sizes) {
+    var graph = computeGraph(positions, n_layers, counts, sizes);
     var usedNodes = [];
     var result = [];
     for (var layer = 0; layer < 2*n_layers; layer++) {
@@ -45,5 +67,5 @@ function live_prim(graph, starting_layer, starting_point, n_layers, counts) {
             var p = result[min[2]][1];
             postMessage([min[0],min[1],l,p]);
         }
-    }, 0);
+    }, 1);
 }
