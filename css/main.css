@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: 'Raleway';
+    font-family: Lato;
     color: white;
     width: 100vw;
     height: 100vh;
@@ -21,7 +21,7 @@ body {
         rgba(0,128,200,0.5) 0%,
         rgba(0,128,200,0.5) 50%,
         rgba(0,128,200,0.0) 100%);
-    font-weight: 100;
+    font-weight: 200;
     font-size: 6em;
 }
 

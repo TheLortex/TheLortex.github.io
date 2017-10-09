@@ -41,7 +41,7 @@ for (var i = 0; i < n_layers; i++) {
     for (var j = 0; j < counts[i]; j++) {
         var distribution = website_ratio/2 + ((1-website_ratio)/2)*(1-sizes[i]);
         var left_point = (Point.random() * view.size * [distribution, 1]);
-        var right_point = (Point.random() * view.size * [distribution, 1]) + view.size * [1-distribution, 1];
+        var right_point = (Point.random() * view.size * [distribution, 1]) + view.size * [1-distribution, 0];
 
         var center = left_point;
         if (Math.random() > 0.5) {
@@ -120,6 +120,8 @@ if (onmobile) {
     work();
 }
 
+var currentDimensions = view.size;
+
 // This is called at 60FPS if the tab is on focus.
 function onFrame(event) {
     // No animation on mobile
@@ -140,13 +142,13 @@ function onFrame(event) {
 
     // line animation.
     var to_delete = [];
-    for (var i in lines) {
+    for (i in lines) {
         var data = lines[i];
         var p1 = gimme_global_position(data[0][0], data[0][1]);
         var p2 = gimme_global_position(data[0][2], data[0][3]);
 
         var scale = (sizes[Math.floor(data[0][0]/2)] + sizes[Math.floor(data[0][2]/2)])/2;
-        if (data[1].strokeColor.alpha < scale && (Math.round(1000000*data[1].strokeColor.alpha) % 10 == 5)) {
+        if (data[1].strokeColor.alpha < scale && (Math.round(1000000*data[1].strokeColor.alpha) % 10 === 5)) {
             data[1].strokeColor.alpha += 0.01*scale;
         } else if (data[1].strokeColor.alpha >= scale) {
             data[1].strokeColor.alpha = scale-0.000001;
@@ -154,27 +156,40 @@ function onFrame(event) {
             data[1].strokeColor.alpha -= 0.01*scale;
         }
 
-        if (distance(p1,p2) > view.size._height || data[1].strokeColor.alpha == 0) {
+        if (distance(p1,p2) > view.size._height || data[1].strokeColor.alpha === 0) {
             to_delete.push(i);
         } else {
             data[1].firstSegment.point = p1;
             data[1].lastSegment.point = p2;
         }
     }
-    for (var i = to_delete.length-1; i >= 0; i--){
+    for (i = to_delete.length-1; i >= 0; i--){
         lines[to_delete[i]][1].removeSegments();
         lines.splice(to_delete[i],1);
         working = false;
     }
 
-    if (lines.length == 0 && !working) {
+    if (lines.length === 0 && !working) {
         working = true;
         setTimeout(work, 200);
     }
 }
 
 
-// TODO: work on it.
 function onResize(event) {
+    var newDimensions = view.size;
+    var scaleX = newDimensions._width/currentDimensions._width;
+    var scaleY = newDimensions._height/currentDimensions._height;
 
+    console.log("Resize ("+scaleX+ ","+scaleY+ ")");
+
+    for (var i in layers) {
+        for (var j in layers[i].children) {
+            layers[i].children[j].position.x = layers[i].children[j].position.x * scaleX;
+            // TODO: Handle Y resize.
+        }
+    }
+
+
+    currentDimensions = newDimensions;
 }
