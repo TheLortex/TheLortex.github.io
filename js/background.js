@@ -185,7 +185,8 @@ function onResize(event) {
 
     for (var i in layers) {
         for (var j in layers[i].children) {
-            layers[i].children[j].position.x = layers[i].children[j].position.x * scaleX;
+            layers[i].children[j].position.x *= scaleX;
+            position_points_in_layers[i][j].x *= scaleX;
             // TODO: Handle Y resize.
         }
     }

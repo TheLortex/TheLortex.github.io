@@ -8,21 +8,88 @@ body {
     overflow: hidden;
 }
 
-#main {
-    margin: auto;
-    width: 60%;
-    position: absolute;
-    left: calc(50vw - 30%);
+#wip {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 30px;
+    padding-bottom: 20px;
+    border-radius: 30px;
+    border-bottom: solid 1px white;
 }
 
-.title {
-    margin-top: 0;
-    background: linear-gradient(to right,
-        rgba(0,128,200,0.5) 0%,
-        rgba(0,128,200,0.5) 50%,
+#menu_container {
+    min-height: 100px;
+    font-size: 50px;
+
+
+    padding-left: 15px;
+}
+
+#menu_container div {
+    display: inline-block;
+    margin-left: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 70px;
+    border-left: solid 1px white;
+    border-bottom: solid 1px transparent;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 0 15px 0 0;
+}
+
+
+#menu_container div:hover {
+    border-bottom: solid 1px white;
+    background-color: #98530e;
+
+}
+
+@media screen and (min-width: 630px) {
+    #main {
+        margin: auto;
+        width: 60%;
+        position: absolute;
+        left: calc(50vw - 30%);
+        top: calc(50vh - 200px);
+    }
+
+    .title {
+        margin-top: 0;
+        background: linear-gradient(to right,
+        rgba(0,128,200,0.7) 0%,
+        rgba(0,128,200,0.7) 50%,
         rgba(0,128,200,0.0) 100%);
-    font-weight: 200;
-    font-size: 6em;
+        font-weight: 200;
+        font-size: 6em;
+        padding-left: 20px;
+    }
+
+    #menu_container {
+        background: linear-gradient(to right,
+        rgba(139, 75, 14,0.95) 0%,
+        rgba(139, 75, 14,0.95) 90%,
+        rgba(139, 75, 14,0.0) 100%);
+    }
+}
+
+
+@media screen and (max-width: 630px) {
+    #main {
+        width: 100%;
+        position: absolute;
+    }
+
+    .title {
+        margin-top: 0;
+        background: rgba(0, 128, 200, 0.5);
+        font-weight: 200;
+        font-size: 6em;
+    }
+
+    #menu_container {
+        background: rgba(139, 75, 14,0.95);
+    }
 }
 
 #main > * {
