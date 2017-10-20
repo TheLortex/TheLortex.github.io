@@ -1,5 +1,4 @@
 onmessage = function(e) {
-    console.log('Working!');
     live_prim(e.data.positions, e.data.starting_layer, e.data.starting_point, e.data.n_layers, e.data.counts, e.data.sizes);
 }
 
@@ -57,8 +56,7 @@ function live_prim(positions, starting_layer, starting_point, n_layers, counts, 
 
     var interval_handler = setInterval(function() {
         min = findMin(graph);
-        if (min == null) {
-            console.log("my job is done");
+        if (min === null) {
             clearInterval(interval_handler);
         } else {
             result.push(min);
