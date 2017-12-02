@@ -138,12 +138,21 @@
     </div>
     <canvas id="background_canvas" style="width: 100%; height: 100%; overflow: hidden" resize="true"></canvas>
     <script type="text/javascript">
+
         $("#lemons").hover(function() {
-            $("#t1").hide();
-            $("#t2").show();
+            $("#t1").stop();
+            $("#t2").stop();
+            $("#t1").fadeOut(150, function() {
+                $("#t2").fadeIn(150);
+            });
         }, function() {
-            $("#t2").hide();
-            $("#t1").show();
+            $("#t1").stop();
+            $("#t2").stop();
+
+            $("#t2").fadeOut(150, function() {
+                $("#t1").fadeIn(150);
+
+            });
         });
     </script>
     </body>
