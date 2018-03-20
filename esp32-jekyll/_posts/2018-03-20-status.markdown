@@ -1,0 +1,28 @@
+---
+layout: post
+title:  "Work in progress status and links"
+date:   2018-03-20 17:25:53 +0000
+categories: status
+excerpt: This article holds my Github projects links related to Mirage-OCaml-ESP32 and will be updated with my progress. It also serve as my notepad and thought long-term storage so you might expect random stuff there too!
+---
+
+## Native backend
+
+* OCaml 4.06.0 with xtensa target and custom settings to build the bytecode runtime on the ESP32. A lot of things are fairly hardcoded, so it's not practical. The whole toolchain can't be built right now, as it tries to built target binaries. The best way to have a functional cross-esp32 toolchain is to install the opam package from opam-cross-esp32. 
+  - [Github - ocaml-esp32](https://github.com/TheLortex/ocaml-esp32)
+* It can generate assembly but it can't be linked classically as it needs to be linked with ESP-IDF tool. We might want a workaround. 
+* I need to find a way to debug generated programs. 
+* Current error on build is: `Error: jump target out of range; no usable trampoline found`. It will be easily fixed but I don't know if I should go with  [this](https://www.amazon.com/gp/product/B000JC2ZHA/) or [this](https://www.amazon.co.uk/gp/product/B074M8W4JY/).
+
+## Cross-compilation of a Mirage unikernel
+
+* Custom esp32 target in Mirage tool. 
+  - [Github - mirage](https://github.com/TheLortex/mirage)
+* OS bindings. 
+  - [Github - mirage-esp32](https://github.com/TheLortex/mirage-esp32)
+* opam-cross-esp32 working on the same scheme as opam-cross-android. It can be used to have a slightly functional OCaml cross-compiler to esp32 compatible with `ocamlfind -toolchain esp32` command. However don't expect to build unikernels with it *yet*. Now figuring out which libraries are strictly necessary, which one should be build with host tools, which one are jbuilder and which one are causing troubles.  
+  - [Github - opam-cross-esp32](https://github.com/TheLortex/opam-cross-esp32)
+
+## Documentation
+
+I need to work on documenting everything I wrote before it becomes too much of a mess.
