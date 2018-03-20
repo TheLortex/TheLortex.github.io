@@ -28,7 +28,6 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
-destination: ../esp32
 google_analytics: UA-42583398-1
 
 # Exclude from processing.
