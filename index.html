@@ -18,12 +18,17 @@
           rel="stylesheet">
     <script type="text/javascript" src="js/paper/paper-full.min.js"></script>
     <script type="text/paperscript" canvas="background_canvas" src="js/background.js"></script>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css" />
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+
     <script src="js/jquery.textfill.js"></script>
 </head>
 <body>
+    <div id="disable_button">
+        Disable animation
+    </div>
     <div id="main" class="mCustomScrollbar" data-mcs-theme="dark">
         <div id="title">
             <span>
@@ -42,6 +47,30 @@
                     </span>
                 </div>
                 <script>
+                    function updateButton() {
+                        if (window.animationEnabled) {
+                            $("#disable_button").text("Disable animation");
+                        } else {
+                            $("#disable_button").text("Enable animation");
+                        }
+                    }
+
+                    window.animationEnabled = window.localStorage.getItem("animate") == "true";;
+                    updateButton();
+                    
+
+                    $("#disable_button").click(function() {
+                        window.animationEnabled = !window.animationEnabled;
+                        updateButton();
+                        window.localStorage.setItem("animate", window.animationEnabled);
+                    });
+
+                    (function($){
+                        $(window).on("load",function(){
+                            $("#main").mCustomScrollbar();
+                        });
+                    })(jQuery);
+
                     // Fun fact is i have to do it twice, else it doesn't work.
                     $('#titlefill').textfill({
                         maxFontPixels: 100,
@@ -114,7 +143,12 @@
                         <i class="material-icons" style="vertical-align: middle; font-size: 4.8vw">open_in_new</i><div style="width: calc(100% - 4.8vw - 30px); text-decoration: inherit; display: inline-block; text-align: center">CV</div>
                     </a>
                 </div>
-
+                <div id="esp_container" style="padding-left: 15px; ">
+                    <i class="material-icons" style="vertical-align: middle; font-size: 4.8vw">developer_board</i>
+                    <a id="cookie" style="color: white; width: 100%" href="//esp32/">
+                        <div style="width: 100%; text-decoration: inherit; display: inline-block; text-align: center">MirageOS on ESP32</div>
+                    </a>
+                </div>
                 <div id="mf_inference" style="padding-left: 15px;">
                     <i class="material-icons" style="vertical-align: middle; font-size: 4.8vw">select_all</i>
                     <a id="mf" style="color: white; width: 100%" href="rapport-de-stage.pdf">
@@ -125,12 +159,6 @@
                     <i class="material-icons" style="vertical-align: middle; font-size: 4.8vw">memory</i>
                     <a id="os" style="color: white; width: 100%" href="https://github.com/math-fehr/WindOS">
                         <div style="width: 100%; text-decoration: inherit; display: inline-block; text-align: center">OS development</div>
-                    </a>
-                </div>
-                <div id="cookie_container" style="padding-left: 15px; ">
-                    <i class="material-icons" style="vertical-align: middle; font-size: 4.8vw">cloud</i>
-                    <a id="cookie" style="color: white; width: 100%" href="https://github.com/mjc-ermont">
-                        <div style="width: 100%; text-decoration: inherit; display: inline-block; text-align: center">Cookie project</div>
                     </a>
                 </div>
             </div>

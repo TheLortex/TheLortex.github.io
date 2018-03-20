@@ -7,6 +7,26 @@ body {
     background-color: #163851;
     overflow: hidden;
 }
+/**
+ * Button to disable animation. 
+ */
+
+#disable_button {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-style: italic;
+}
+
+#disable_button:hover {
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+
+/**
+ * Main content
+ */
 
 #wip {
     text-align: center;
@@ -139,20 +159,21 @@ a:hover {
         border-right: solid 1px white;
     }
 
-    #mf_inference {
+    #esp_container {
         grid-column: 4 / 7;
         grid-row: 2;
     }
 
-    #os_container {
+    #mf_inference {
         grid-column: 4 / 7;
         grid-row: 3;
     }
 
-    #cookie_container {
+    #os_container {
         grid-column: 4 / 7;
         grid-row: 4;
     }
+
 }
 
 
@@ -189,20 +210,21 @@ a:hover {
     }
 
 
-    #mf_inference {
+    #esp_container {
         grid-column: 1 / 7;
         grid-row: 6;
     }
 
-    #os_container {
+    #mf_inference {
         grid-column: 1 / 7;
         grid-row: 7;
     }
 
-    #cookie_container {
+    #os_container {
         grid-column: 1 / 7;
         grid-row: 8;
     }
+
 }
 
 /**
@@ -215,7 +237,6 @@ a:hover {
     #main {
         margin: auto;
         width: 60%;
-        height: 100%;
         position: absolute;
         left: calc(50vw - 30%);
         background-color: rgba(107, 132, 195, 0.46);

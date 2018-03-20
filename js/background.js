@@ -125,7 +125,7 @@ var currentDimensions = view.size;
 // This is called at 60FPS if the tab is on focus.
 function onFrame(event) {
     // No animation on mobile
-    if (onmobile) {
+    if (onmobile || !window.animationEnabled) {
         return;
     }
 
