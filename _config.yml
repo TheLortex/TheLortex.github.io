@@ -17,7 +17,7 @@ title: MirageOS on ESP32 - a tale of cross-compilation
 email: "lucas.pluvinage@ens.fr"
 description: >- # this means to ignore newlines until "baseurl:"
   In this blog I will explain and track my progress on Mirage, OCaml and ESP32 development. 
-baseurl: "/esp32" # the subpath of your site, e.g. /blog
+baseurl: "/" # the subpath of your site, e.g. /blog
 #url: "//home/lucas/TheLortex.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 url: "https://www.lortex.org"
 github_username:  TheLortex
