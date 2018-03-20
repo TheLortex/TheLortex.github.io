@@ -10,15 +10,27 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="As an intern at the OCamlLab, my project is to port MirageOS on ESP32 boards. This is my first post to explain a bit what is the subject, give some links, hints on what is to be done." />
 <meta property="og:description" content="As an intern at the OCamlLab, my project is to port MirageOS on ESP32 boards. This is my first post to explain a bit what is the subject, give some links, hints on what is to be done." />
-<link rel="canonical" href="//home/lucas/TheLortex.github.io/esp32/mirage/native-backend/esp32/2018/03/20/mirage-and-esp32.html" />
-<meta property="og:url" content="//home/lucas/TheLortex.github.io/esp32/mirage/native-backend/esp32/2018/03/20/mirage-and-esp32.html" />
+<link rel="canonical" href="https://www.lortex.org/esp32/mirage/native-backend/esp32/2018/03/20/mirage-and-esp32.html" />
+<meta property="og:url" content="https://www.lortex.org/esp32/mirage/native-backend/esp32/2018/03/20/mirage-and-esp32.html" />
 <meta property="og:site_name" content="MirageOS on ESP32 - a tale of cross-compilation" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-03-20T12:13:37+00:00" />
 <script type="application/ld+json">
-{"description":"As an intern at the OCamlLab, my project is to port MirageOS on ESP32 boards. This is my first post to explain a bit what is the subject, give some links, hints on what is to be done.","author":{"@type":"Person","name":"Lucas Pluvinage"},"@type":"BlogPosting","url":"//home/lucas/TheLortex.github.io/esp32/mirage/native-backend/esp32/2018/03/20/mirage-and-esp32.html","headline":"Mirage on embedded devices: where are we?","dateModified":"2018-03-20T12:13:37+00:00","datePublished":"2018-03-20T12:13:37+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"//home/lucas/TheLortex.github.io/esp32/mirage/native-backend/esp32/2018/03/20/mirage-and-esp32.html"},"@context":"http://schema.org"}</script>
+{"description":"As an intern at the OCamlLab, my project is to port MirageOS on ESP32 boards. This is my first post to explain a bit what is the subject, give some links, hints on what is to be done.","author":{"@type":"Person","name":"Lucas Pluvinage"},"@type":"BlogPosting","url":"https://www.lortex.org/esp32/mirage/native-backend/esp32/2018/03/20/mirage-and-esp32.html","headline":"Mirage on embedded devices: where are we?","dateModified":"2018-03-20T12:13:37+00:00","datePublished":"2018-03-20T12:13:37+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.lortex.org/esp32/mirage/native-backend/esp32/2018/03/20/mirage-and-esp32.html"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/esp32/assets/main.css"><link type="application/atom+xml" rel="alternate" href="//home/lucas/TheLortex.github.io/esp32/feed.xml" title="MirageOS on ESP32 - a tale of cross-compilation" /></head>
+<link rel="stylesheet" href="/esp32/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://www.lortex.org/esp32/feed.xml" title="MirageOS on ESP32 - a tale of cross-compilation" /><script>
+if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1")) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42583398-1', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+  
+</head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/esp32/">MirageOS on ESP32 - a tale of cross-compilation</a><nav class="site-nav">
