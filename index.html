@@ -18,148 +18,153 @@
           rel="stylesheet">
     <script type="text/javascript" src="js/paper/paper-full.min.js"></script>
     <script type="text/paperscript" canvas="background_canvas" src="js/background.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 
     <script src="js/jquery.textfill.js"></script>
+
+    <link rel="stylesheet" href="https://malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css" />
+    <script src="https://malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
 </head>
 <body>
     <div id="disable_button">
         Disable animation
     </div>
-    <div id="main" class="mCustomScrollbar" data-mcs-theme="dark">
-        <div id="title">
-            <span>
-                Lucas Pluvinage
-            </span>
-        </div>
-        <nav id="menu_container">
-            This is an experimental homepage.
-        </nav>
-        <div id="content_container">
-            <div class="row">
-                <img src="duck.png" alt="Me" />
-                <div id="titlefill" style="text-align: left; cursor: pointer; width: calc(75% - 30px); display: inline-block;">
-                    <span id="lemons" style="font-weight: 200;">
-                        “When life gives you lemons…”
-                    </span>
-                </div>
-                <script>
-                    function updateButton() {
-                        if (window.animationEnabled) {
-                            $("#disable_button").text("Disable animation");
-                        } else {
-                            $("#disable_button").text("Enable animation");
+    <div id="main-container">
+        <div id="main">
+            <div id="title">
+                <span>
+                    Lucas Pluvinage
+                </span>
+            </div>
+            <nav id="menu_container">
+                This is an experimental homepage.
+            </nav>
+            <div id="content_container">
+                <div class="row">
+                    <img src="duck.png" alt="Me" />
+                    <div id="titlefill" style="text-align: left; cursor: pointer; width: calc(75% - 30px); display: inline-block;">
+                        <span id="lemons" style="font-weight: 200;">
+                            “When life gives you lemons…”
+                        </span>
+                    </div>
+                    <script>
+                        function updateButton() {
+                            if (window.animationEnabled) {
+                                $("#disable_button").text("Disable animation");
+                            } else {
+                                $("#disable_button").text("Enable animation");
+                            }
                         }
-                    }
-
-                    window.animationEnabled = window.localStorage.getItem("animate") == "true";;
-                    updateButton();
-                    
-
-                    $("#disable_button").click(function() {
-                        window.animationEnabled = !window.animationEnabled;
+    
+                        window.animationEnabled = window.localStorage.getItem("animate") != "false";;
                         updateButton();
-                        window.localStorage.setItem("animate", window.animationEnabled);
-                    });
 
-                    (function($){
-                        $(window).on("load",function(){
-                            $("#main").mCustomScrollbar();
+                        (function($){
+                            $(window).on("load",function(){
+                                $("#main-container").mCustomScrollbar({
+                                    scrollbarPosition: "outside"
+                                });
+                            });
+                        })(jQuery);
+    
+                        $("#disable_button").click(function() {
+                            window.animationEnabled = !window.animationEnabled;
+                            updateButton();
+                            window.localStorage.setItem("animate", window.animationEnabled);
                         });
-                    })(jQuery);
-
-                    // Fun fact is i have to do it twice, else it doesn't work.
-                    $('#titlefill').textfill({
-                        maxFontPixels: 100,
-                        widthOnly: true
-                    });
-                    $('#titlefill').textfill({
-                        maxFontPixels: 100,
-                        widthOnly: true
-                    });
-
-                    $('#title').textfill({
-                        maxFontPixels: 100,
-                        widthOnly: true
-                    });
-                    $('#title').textfill({
-                        maxFontPixels: 100,
-                        widthOnly: true
-                    });
-
-                    $(window).resize(function() {
+    
+                        // Fun fact is i have to do it twice, else it doesn't work.
                         $('#titlefill').textfill({
                             maxFontPixels: 100,
                             widthOnly: true
                         });
-
+                        $('#titlefill').textfill({
+                            maxFontPixels: 100,
+                            widthOnly: true
+                        });
+    
                         $('#title').textfill({
                             maxFontPixels: 100,
                             widthOnly: true
                         });
-                    });
-                </script>
-                <br/> <br/>
-                <p id="t1">
-                    I am French computer science enthousiast, currently studying in my first year of Master's Degree in
-                    Computer Science at the École Normale Supérieure of Paris, see
-                    <a href="http://diplome.di.ens.fr">diplome.di.ens.fr</a> for more informations.
-                </p>
-                <p id="t2" style="display: none">
-                    …don't make limonade. Make life take the lemons back! Get mad! I don’t want your damn lemons, what the hell am I supposed to do with these‽
-                    Demand to see life’s manager! Do you know who I am‽
-                    I’m the man who’s gonna burn your house down! With the lemons!
-                    I’m gonna get my engineers to invent a combustible lemon that burns your house down!
-                </p>
-
-                <div style="clear: both"></div>
-            </div>
-            <div class="row" id="desc" style="font-size: 23px;">
-                <h1 id="info_container" style="text-align: center; font-weight: 400;">
-                    Info
-                </h1>
-
-                <h1 id="projects_container" style="text-align: center; font-weight: 400;">
-                    Main projects
-                </h1>
-
-                <div id="github_container">
-                    <a id="github" style="width: 100%; color: white" href="https://github.com/TheLortex/">
-                        <img id="gh-image" src="github.png" /><div style="width: calc(100% - 4.8vw - 30px); text-decoration: inherit; display: inline-block; text-align: center">TheLortex</div>
-                    </a>
+                        $('#title').textfill({
+                            maxFontPixels: 100,
+                            widthOnly: true
+                        });
+    
+                        $(window).resize(function() {
+                            $('#titlefill').textfill({
+                                maxFontPixels: 100,
+                                widthOnly: true
+                            });
+    
+                            $('#title').textfill({
+                                maxFontPixels: 100,
+                                widthOnly: true
+                            });
+                        });
+                    </script>
+                    <br/> <br/>
+                    <p id="t1">
+                        I am French computer science enthousiast, currently studying in my first year of Master's Degree in
+                        Computer Science at the École Normale Supérieure of Paris, see
+                        <a href="http://diplome.di.ens.fr">diplome.di.ens.fr</a> for more informations.
+                    </p>
+                    <p id="t2" style="display: none">
+                        …don't make limonade. Make life take the lemons back! Get mad! I don’t want your damn lemons, what the hell am I supposed to do with these‽
+                        Demand to see life’s manager! Do you know who I am‽
+                        I’m the man who’s gonna burn your house down! With the lemons!
+                        I’m gonna get my engineers to invent a combustible lemon that burns your house down!
+                    </p>
+    
+                    <div style="clear: both"></div>
                 </div>
-                <div id="email_container">
-
-                    <i class="material-icons" style="vertical-align: middle; font-size: 4.8vw; margin-right: 10px;">email</i>
-                    <div style="display: inline-block; width: calc(100% - 4.8vw - 30px); text-align: center">
-                        lucas [dot] pluvinage [at] ens [dot] fr
+                <div class="row" id="desc" style="font-size: 23px;">
+                    <h1 id="info_container" style="text-align: center; font-weight: 400;">
+                        Info
+                    </h1>
+    
+                    <h1 id="projects_container" style="text-align: center; font-weight: 400;">
+                        Main projects
+                    </h1>
+    
+                    <div id="github_container">
+                        <a id="github" style="width: 100%; color: white" href="https://github.com/TheLortex/">
+                            <img id="gh-image" src="github.png" /><div style="width: calc(100% - 4.8vw - 30px); text-decoration: inherit; display: inline-block; text-align: center">TheLortex</div>
+                        </a>
                     </div>
-                </div>
-                <div id="cv_container">
-                    <a id="cv" style="color: white; width: 100%" href="cv.pdf">
-                        <i class="material-icons" style="vertical-align: middle; font-size: 4.8vw">open_in_new</i><div style="width: calc(100% - 4.8vw - 30px); text-decoration: inherit; display: inline-block; text-align: center">CV</div>
-                    </a>
-                </div>
-                <div id="esp_container" style="padding-left: 15px; ">
-                    <i class="material-icons" style="vertical-align: middle; font-size: 4.8vw">developer_board</i>
-                    <a id="cookie" style="color: white; width: 100%" href="esp32/">
-                        <div style="width: 100%; text-decoration: inherit; display: inline-block; text-align: center">MirageOS on ESP32</div>
-                    </a>
-                </div>
-                <div id="mf_inference" style="padding-left: 15px;">
-                    <i class="material-icons" style="vertical-align: middle; font-size: 4.8vw">select_all</i>
-                    <a id="mf" style="color: white; width: 100%" href="rapport-de-stage.pdf">
-                        <div style="width: 100%; text-decoration: inherit; display: inline-block; text-align: center">Mean-field inference</div>
-                    </a>
-                </div>
-                <div id="os_container" style="padding-left: 15px;">
-                    <i class="material-icons" style="vertical-align: middle; font-size: 4.8vw">memory</i>
-                    <a id="os" style="color: white; width: 100%" href="https://github.com/math-fehr/WindOS">
-                        <div style="width: 100%; text-decoration: inherit; display: inline-block; text-align: center">OS development</div>
-                    </a>
+                    <div id="email_container">
+    
+                        <i class="material-icons" style="vertical-align: middle; font-size: 4.8vw; margin-right: 10px;">email</i>
+                        <div style="display: inline-block; width: calc(100% - 4.8vw - 30px); text-align: center">
+                            lucas [dot] pluvinage [at] ens [dot] fr
+                        </div>
+                    </div>
+                    <div id="cv_container">
+                        <a id="cv" style="color: white; width: 100%" href="cv.pdf">
+                            <i class="material-icons" style="vertical-align: middle; font-size: 4.8vw">open_in_new</i><div style="width: calc(100% - 4.8vw - 30px); text-decoration: inherit; display: inline-block; text-align: center">CV</div>
+                        </a>
+                    </div>
+                    <div id="esp_container" style="padding-left: 15px; ">
+                        <i class="material-icons" style="vertical-align: middle; font-size: 4.8vw">developer_board</i>
+                        <a id="cookie" style="color: white; width: 100%" href="esp32/">
+                            <div style="width: 100%; text-decoration: inherit; display: inline-block; text-align: center">MirageOS on ESP32</div>
+                        </a>
+                    </div>
+                    <div id="mf_inference" style="padding-left: 15px;">
+                        <i class="material-icons" style="vertical-align: middle; font-size: 4.8vw">select_all</i>
+                        <a id="mf" style="color: white; width: 100%" href="rapport-de-stage.pdf">
+                            <div style="width: 100%; text-decoration: inherit; display: inline-block; text-align: center">Mean-field inference</div>
+                        </a>
+                    </div>
+                    <div id="os_container" style="padding-left: 15px;">
+                        <i class="material-icons" style="vertical-align: middle; font-size: 4.8vw">memory</i>
+                        <a id="os" style="color: white; width: 100%" href="https://github.com/math-fehr/WindOS">
+                            <div style="width: 100%; text-decoration: inherit; display: inline-block; text-align: center">OS development</div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
