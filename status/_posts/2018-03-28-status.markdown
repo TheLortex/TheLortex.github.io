@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Work in progress status and links - 27/03/2018"
-date:   2018-03-27 10:18:53 +0000
+date:   2018-03-28 10:18:53 +0000
 categories: status
 excerpt: This article holds my Github projects links related to Mirage-OCaml-ESP32 and will be updated with my progress. It also serve as my notepad and thought long-term storage so you might expect random stuff there too!
 ---
@@ -10,7 +10,8 @@ excerpt: This article holds my Github projects links related to Mirage-OCaml-ESP
 
 * OCaml 4.06.0 with xtensa target and custom settings to build the bytecode runtime on the ESP32. A lot of things are fairly hardcoded, so it's not practical. The whole toolchain can't be built right now, as it tries to built target binaries. The best way to have a functional cross-esp32 toolchain is to install the opam package from opam-cross-esp32. 
   - [Github - ocaml-esp32](https://github.com/TheLortex/ocaml-esp32)
-* I have code generation and linking working.
+* I have code generation and linking working. This is an example with the files I used to build my native hello world!
+  - [Github - hello_ocaml](https://github.com/TheLortex/hello_ocaml)
 * Now debugging it with a custom gdb and QEMU. 
 
 ## Cross-compilation of a Mirage unikernel
