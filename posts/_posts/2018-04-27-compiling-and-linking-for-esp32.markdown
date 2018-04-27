@@ -14,7 +14,7 @@ Switch opam to OCaml version 4.06 or a 4.07 as only these two versions are suppo
 
 Add my cross-compilation repository in opam, with:
 ```
-opam repo add cross-esp32 https://github.com/TheLortex/opam-cross-esp32
+opam repo add cross-esp32 https://github.com/TheLortex/opam-cross-esp32.git
 ```
 After that, you'll be able to install the cross-compiler, with:
 ```
