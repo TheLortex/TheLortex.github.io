@@ -4,6 +4,7 @@ title:  "Last week report"
 date:   2018-03-27 11:13:37 +0000
 categories: ocaml-native-backend esp32
 excerpt: Assembly, code generation and debugging fun!
+comments: true
 ---
 
 

@@ -4,6 +4,7 @@ title:  "Compiling and linking for ESP32"
 date:   2018-03-29 10:13:37 +0000
 categories: ocaml-native-backend esp32
 excerpt: A guide to a full native compilation workflow for ESP32
+comments: true
 ---
 I've got native OCaml code running! It seems to pass all the runtime tests, and as I fixed some GC segfaults I'm now pretty confident in the backend code. 
 It's not optimized at all, but you can now experiment with OCaml on ESP32 MCUs. 
