@@ -35,3 +35,11 @@ A video will be available soon. You can find the slides [here](/assets/ESP32_tal
 ## What comes next ?
 
 I'll pause my ESP32 work, to focus on other fields and courses for a semester. However this is not the end of the project and there remains a lot to achieve. Things that I want to do include building new libraries to take advantage of ESP32 features and make them available trough Mirage abstractions.
+
+TODO:
+* Programming Ultra-Low Power processor
+* Reading sensors
+* Integrating sensors in the event system
+* Bluetooth integration
+* Reducing OCaml memory footprint
+* Benchmarking 
