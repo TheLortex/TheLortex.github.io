@@ -1,0 +1,27 @@
+---
+layout: post
+title:  "Work in progress status and links - 02/10/2018"
+date:   2018-10-02 12:00:00 +0000
+categories: status
+excerpt: This article holds my Github projects links related to Mirage-OCaml-ESP32 and will be updated with my progress. It also serve as my notepad and thought long-term storage so you might expect random stuff there too!
+---
+
+* We now have native compilation for ESP32! That opens a lot of possibilities!
+* Mirage is available for ESP32 target, it allows to build complex applications for this platform, such as an HTTPS server.
+* All this work is stored under a Github organization: [well-typed-lightbulbs](https://github.com/well-typed-lightbulbs).
+
+## Native backend
+
+* OCaml 4.06.0 with xtensa target and custom settings to build the bytecode runtime on the ESP32. The best way to have a functional cross-esp32 toolchain is to install the `ocaml-esp32` opam package from opam-cross-esp32. It requires an `4.06.0+32bit` base compiler.
+  - [Github - ocaml-esp32](https://github.com/well-typed-lightbulbs/ocaml-esp32)
+* I have code generation and linking working. This is an example with the files I used to build my native hello world!
+  - [Github - ocaml docker sample](https://github.com/well-typed-lightbulbs/esp32-docker-samples/tree/master/ocaml)
+
+## Cross-compilation of a Mirage unikernel
+
+* See [Build your own Mirage](https://www.lortex.org/posts/mirage/esp32/2018/06/22/build-your-own-mirage.html) article to find out more about building a Mirage unikernel.
+
+## Mirage unikernel samples
+
+* Three sample docker scripts that build for ESP32: [esp32-docker-samples](https://github.com/well-typed-lightbulbs/esp32-docker-samples). They build C, OCaml and Mirage code.
+* Three sample Mirage applications: [mirage-esp32-samples](https://github.com/well-typed-lightbulbs/mirage-esp32-samples). `hello_world`: a basic printer. `ap_dhcp`: an access point delivering IPs trough DHCP. `lcd_wifi_demo`: makes use of network and lcd screen features. 
