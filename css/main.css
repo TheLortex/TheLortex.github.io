@@ -1,4 +1,22 @@
 /*
+ Jekyll generated
+*/
+
+.post-meta {
+  font-size: 0.7em;
+  margin-right: 15px;
+}
+
+.post-list li {
+  border-bottom: solid white 1px;
+  padding-bottom: 15px; 
+}
+
+.post-list h3 {
+  margin-top: 15px;
+}
+
+/*
  Common rules
 */
 
@@ -20,12 +38,17 @@ body {
   margin: 0;
 }
 
-.row {
+.row, .post {
   padding: 20px;
+}
+
+#content {
+  font-size: 1.5em;
 }
 
 h2 {
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 a,
@@ -176,7 +199,6 @@ Menu
 }
 
 #content_container {
-  font-size: 1.5em;
   height: 100%;
 }
 

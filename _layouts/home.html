@@ -2,13 +2,11 @@
 layout: default
 ---
 
-<div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
-
-
-  {%- if site.categories.status.size > 0 -%}
+<div>
+  <div class="row">
+    {%- if page.title -%}
+    <h2 class="page-heading">{{ page.title }}</h2>
+    {%- endif -%} {%- if site.categories.status.size > 0 -%}
     <ul class="post-list">
       {%- for post in site.categories.status -%}
       <li>
@@ -18,35 +16,42 @@ layout: default
           </a>
         </h3>
         {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
+        {{ post.excerpt }}
         {%- endif -%}
       </li>
       {%- endfor -%}
     </ul>
 
-  {%- endif -%}
+    {%- endif -%}
 
-  {{ content }}
+    {{ content }}
+  </div>
 
-  {%- if site.categories.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+  <div class="row bg-orange">
+    {%- if site.categories.posts.size > 0 -%}
+    <h2 class="post-list-heading ">
+      {{ page.list_title | default: "Posts" }}
+    </h2>
+  </div>
+  <div class="row">
     <ul class="post-list">
       {%- for post in site.categories.posts -%}
       <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y"
+        -%}
         <h3>
+          <span class="post-meta">{{ post.date | date: date_format }}</span>
           <a class="post-link" href="{{ post.url | relative_url }}">
             {{ post.title | escape }}
           </a>
         </h3>
         {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
+        {{ post.excerpt }}
         {%- endif -%}
       </li>
       {%- endfor -%}
     </ul>
+  </div>
 
   {%- endif -%}
-
 </div>

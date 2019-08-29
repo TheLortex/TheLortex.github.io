@@ -72,12 +72,14 @@ function loadPage(which_one, first) {
 }
 
 $(document).ready(function() {
-  loadPage(
-    $(location)
-      .attr("hash")
-      .slice(1),
-    true
-  );
+  if ($(location).attr("href").includes("#")) {
+    loadPage(
+      $(location)
+        .attr("hash")
+        .slice(1),
+      true
+    );
+  }
 });
 
 $(document).ready(function() {

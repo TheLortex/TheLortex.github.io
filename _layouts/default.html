@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-42583398-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-42583398-1");
+    </script>
+    <meta charset="utf-8" />
+    <title>Lucas Pluvinage</title>
+    <link rel="icon" href="/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+    <link
+      href="//fonts.googleapis.com/css?family=Lato:300|Raleway"
+      rel="stylesheet"
+    />
+    <link href="/css/main.css" rel="stylesheet" />
+    <link
+      href="//fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="/js/vendor/paper/paper-full.min.js"
+    ></script>
+    <script type="text/javascript" src="/js/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/vendor/jquery.textfill.js"></script>
+    <script
+      type="text/paperscript"
+      canvas="background_canvas"
+      src="/js/background.js"
+    ></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+  </head>
+  <body>
+    <div id="disable_button">
+      Disable animation
+    </div>
+    <div id="main-container">
+      <div id="title">
+        <span>
+          Lucas Pluvinage
+        </span>
+      </div>
+      <nav id="menu_container">
+        <a id="menu-main" href="/#" onClick="loadPage('main', false)"> Home</a>
+        <a
+          id="menu-systems"
+          href="/#systems"
+          onClick="loadPage('systems', false)"
+          >Systems/Compilation</a
+        >
+        <a id="menu-ai" href="/#ai" onClick="loadPage('ai', false)">AI/ML</a>
+        <a id="menu-pics" href="/#pics" onClick="loadPage('pics', false)"
+          >Cool pics</a
+        >
+        {% if page.url contains "esp32" %}
+        <a id="menu-esp32" class="selected" href="/esp32/"
+          >ESP32</a
+        >
+        {% endif %}
+        {% if page.url contains "status" %}
+        <a id="menu-esp32" class="selected" href="/esp32/"
+          >ESP32</a
+        >
+        {% endif %}
+        {% if page.url == "/404.html" %}
+        <a id="menu-esp32" class="selected"
+          >404</a
+        >
+        {% endif %}
+      </nav>
+      <div id="content">
+        {{ content }}
+      </div>
+    </div>
+    <canvas id="background_canvas" resize="true"></canvas>
+  </body>
+</html>
