@@ -79,6 +79,11 @@ $(document).ready(function() {
         .slice(1),
       true
     );
+  } else if ($(location).attr("pathname") == "/") {
+    loadPage(
+      "main",
+      true
+    );
   }
 });
 
