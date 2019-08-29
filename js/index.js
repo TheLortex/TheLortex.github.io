@@ -80,6 +80,14 @@ $(document).ready(function() {
   );
 });
 
+$(document).ready(function() {
+  /* Textfill */
+  $("#title").textfill({
+    maxFontPixels: 100,
+    widthOnly: true
+  });
+
+
 /* Background animation button */
 
 function updateButton() {
@@ -92,19 +100,10 @@ function updateButton() {
 
 window.animationEnabled = window.localStorage.getItem("animate") != "false";
 updateButton();
-
-$("#disable_button").click(function() {
-  window.animationEnabled = !window.animationEnabled;
-  updateButton();
-  window.localStorage.setItem("animate", window.animationEnabled);
-});
-
-/* Textfill */
-
-$(document).ready(function() {
-  $("#title").textfill({
-    maxFontPixels: 100,
-    widthOnly: true
+  $("#disable_button").click(function() {
+    window.animationEnabled = !window.animationEnabled;
+    updateButton();
+    window.localStorage.setItem("animate", window.animationEnabled);
   });
 });
 
