@@ -1,18 +1,3 @@
-$("#titlefill").textfill({
-  maxFontPixels: 100,
-  widthOnly: true
-});
-$("#titlefill").textfill({
-  maxFontPixels: 100,
-  widthOnly: true
-});
-
-$(window).resize(function() {
-  $("#titlefill").textfill({
-    maxFontPixels: 100,
-    widthOnly: true
-  });
-});
 
 $("#lemons").hover(
   function() {

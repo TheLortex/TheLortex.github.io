@@ -27,6 +27,8 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: #163851;
+  background-image: url("../assets/3px-tile.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   overflow-x: hidden;
 }
 
@@ -72,41 +74,23 @@ a:hover {
   font-style: italic;
 }
 
-/**
- * Button to disable animation. 
- */
-
-#disable_button {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  font-style: italic;
-}
-
-#disable_button:hover {
-  font-size: 1.2em;
-  cursor: pointer;
-}
-
-@media screen and (max-width: 1023px) {
-  #disable_button {
-    display: none;
-  }
-}
 
 /* 
 title
 */
 
+.rainbow-text:hover {
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);   
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+}
+
 #title {
   background: rgba(0, 128, 200, 0.7);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  font-size: 20px;
+  font-size: 60px;
   position: relative;
-  margin-top: 0;
-  margin-bottom: 0;
-  font-weight: 200;
-  max-height: 128px;
   padding-left: 20px;
 }
 
@@ -209,13 +193,6 @@ Menu
   margin-bottom: 10px;
 }
 
-#gh-image {
-  width: 4.8vw;
-  float: none;
-  vertical-align: middle;
-  margin-right: 15px;
-}
-
 #picture {
   flex: 1;
   margin-right: 30px;
@@ -254,16 +231,15 @@ Menu
 
 /* INFO | PROJECTS */
 #infoandprojects {
-  font-size: 1.5em;
+  font-size: 1.2em;
 
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: minmax(85px, auto);
-
-  text-align: center;
+  padding-top: 0;
 }
 
-#infoandprojects, .bg-orange {
+.bg-orange {
   background-color: rgb(213, 125, 15);
   box-shadow: 0 -5px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
@@ -292,10 +268,12 @@ Menu
   }
 }
 
-#infoandprojects > h1 {
+#infoandprojects > h2 {
   margin: 0;
-  padding-bottom: 20px;
-  text-align: center;
+  padding-left: calc(2.4vw + 16px + 16px);
+  display: flex;
+  align-items: center;
+  text-align: left;
   font-weight: 600;
 }
 
@@ -305,13 +283,20 @@ Menu
 }
 
 #infoandprojects > div > i {
+  font-size: 2.4vw;
   vertical-align: middle;
-  font-size: 4.8vw;
+  margin-right: 16px;
+  margin-left: 18px;
 }
 
 #gh-image {
-  margin-left: 8px;
+  width: 2.4vw;
+  float: none;
+  vertical-align: middle;
+  margin-right: 16px;
+  margin-left: 22px;
 }
+
 
 #github_container,
 #cv_container,

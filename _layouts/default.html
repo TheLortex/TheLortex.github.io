@@ -30,23 +30,8 @@
       href="//fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <script
-      type="text/javascript"
-      src="/js/vendor/paper/paper-full.min.js"
-    ></script>
-    <script type="text/javascript" src="/js/vendor/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/vendor/jquery.textfill.js"></script>
-    <script
-      type="text/paperscript"
-      canvas="background_canvas"
-      src="/js/background.js"
-    ></script>
-    <script type="text/javascript" src="/js/index.js"></script>
   </head>
   <body>
-    <div id="disable_button">
-      Disable animation
-    </div>
     <div id="main-container">
       <div id="title">
         <span>
@@ -54,17 +39,34 @@
         </span>
       </div>
       <nav id="menu_container">
-        <a id="menu-main" href="/#" onClick="loadPage('main', false)"> Home</a>
+        <a 
+          id="menu-main" 
+          href="/"
+          {% if page.url == "/" %} class="selected" {% endif %}
+        > Home</a>
+
+
         <a
           id="menu-systems"
-          href="/#systems"
-          onClick="loadPage('systems', false)"
+          href="/systems"
+          {% if page.url contains "/systems" %} class="selected" {% endif %}
           >Systems/Compilation</a
         >
-        <a id="menu-ai" href="/#ai" onClick="loadPage('ai', false)">AI/ML</a>
-        <a id="menu-pics" href="/#pics" onClick="loadPage('pics', false)"
+
+        <a 
+          id="menu-ai" 
+          href="/ai"
+          {% if page.url contains "/ai" %} class="selected" {% endif %}
+        > AI/ML</a>
+
+
+        <a 
+          id="menu-pics" 
+          href="/pics"
+          {% if page.url contains "/pics" %} class="selected" {% endif %}
           >Cool pics</a
         >
+
         {% if page.url contains "esp32" %}
         <a id="menu-esp32" class="selected" href="/esp32/"
           >ESP32</a
@@ -85,6 +87,5 @@
         {{ content }}
       </div>
     </div>
-    <canvas id="background_canvas" resize="true"></canvas>
   </body>
 </html>
