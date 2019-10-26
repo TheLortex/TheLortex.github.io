@@ -164,6 +164,7 @@ Menu
 #main-container {
   background-color: rgba(67, 90, 130, 0.9);
   margin: auto;
+  margin-bottom: 16px;
 }
 
 @media screen and (min-width: 1440px) {
@@ -184,6 +185,12 @@ Menu
 
 #content_container {
   height: 100%;
+}
+
+#footer {
+  padding: 10px;
+  font-style: italic;
+  text-align: right
 }
 
 /* MAIN.HTML */
