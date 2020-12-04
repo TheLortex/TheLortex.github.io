@@ -1,71 +1,53 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <title>Lucas Pluvinage</title>
-    <link rel="icon" href="/favicon/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link href="/css/main.css" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="main-container">
-      <div id="title">
-        <span>
-          Lucas Pluvinage
-        </span>
-      </div>
-      <nav id="menu_container">
-        <a 
-          id="menu-main" 
-          href="/"
-          {% if page.url == "/" %} class="selected" {% endif %}
-        > Home</a>
 
+<head>
+  <meta charset="utf-8" />
+  <title>Lucas Pluvinage</title>
+  <link rel="icon" href="/favicon/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link href="/css/main.css" rel="stylesheet" />
+</head>
 
-        <a
-          id="menu-systems"
-          href="/systems"
-          {% if page.url contains "/systems" %} class="selected" {% endif %}
-          >Systems/Compilation</a
-        >
-
-        <a 
-          id="menu-ai" 
-          href="/ai"
-          {% if page.url contains "/ai" %} class="selected" {% endif %}
-        > AI/ML</a>
-
-
-        <a 
-          id="menu-pics" 
-          href="/pics"
-          {% if page.url contains "/pics" %} class="selected" {% endif %}
-          >Cool pics</a
-        >
-
-        {% if page.url contains "esp32" %}
-        <a id="menu-esp32" class="selected" href="/esp32/"
-          >ESP32</a
-        >
-        {% endif %}
-        {% if page.url contains "status" %}
-        <a id="menu-esp32" class="selected" href="/esp32/"
-          >ESP32</a
-        >
-        {% endif %}
-        {% if page.url == "/404.html" %}
-        <a id="menu-esp32" class="selected"
-          >404</a
-        >
-        {% endif %}
-      </nav>
-      <div id="content">
-        {{ content }}
-      </div>
-      <div id="footer">
-        Made with 🦆 by TheLortex - powered by <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://pages.github.com/">Github Pages</a>
-      </div>
+<body>
+  <div id="main-container" style="display: flex; flex-direction: column;">
+    <div id="title">
+      {% include code.html command="cat name" output="Lucas Pluvinage" %}
     </div>
-  </body>
+    <nav id="menu_container">
+      {% capture menu %}
+      <a href="/" class="menu-entry {% if page.url == "/" %}selected{% endif %}">home/</a>
+      <a href="/systems" class="systems-entry {% if page.url contains "/systems" %}selected{% endif %}">systems/</a>
+      <a href="/ai" class="ai-entry {% if page.url contains "/ai" %}selected{% endif %}">ai/</a>
+      <a href="/pictures" class="pics-entry {% if page.url contains "/pictures" %}selected{% endif %}">pictures/</a>
+      <span style="color: gray;">name</span>
+      {% endcapture %}
+      {% include code.html command="ls" output=menu %}
+
+
+      {% capture dir %}
+      {% include dir.html %}
+      {% endcapture %}
+      {% capture cd %}
+      cd {{dir}}
+      {% endcapture %}
+      {% include code.html command=cd %}
+    </nav>
+    <div id="content">
+      {{ content }}
+    </div>
+    {% capture footer %}
+    <span id="footer">
+      Made with 🦆 by TheLortex - powered by <a href="https://jekyllrb.com/">Jekyll</a> and <a
+          href="https://pages.github.com/">Github Pages</a>
+    </span>
+    {% endcapture %}
+    <div style="flex:1"></div>
+    <div style="background-color: #00000040; margin: 0 -8px; padding: 0 8px; opacity: 0.5;">
+      {% include code.html dir=dir command="poweroff" output=footer %}
+    </div>
+  </div>
+</body>
+
 </html>

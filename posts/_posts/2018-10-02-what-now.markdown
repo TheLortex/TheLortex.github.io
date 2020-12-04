@@ -26,11 +26,7 @@ All the information you might need to actually use this project is available on 
 My talk was accepted for the OCaml Workshop co-located with ICFP 2018 in Saint-Louis, USA. Informations on the talk are available on the ICFP 2018 website: [here](https://icfp18.sigplan.org/event/ocaml-2018-papers-ocaml-on-the-esp32-chip-well-typed-lightbulbs-await).
 A video will be available soon. You can find the slides [here](/assets/ESP32_talk.pdf). Finally, here are some pictures!
 
-![ICFP1](/assets/icfp1.jpg){:width="35.9%"}
-![ICFP2](/assets/icfp2.jpg){:width="64%"}
-![ICFP3](/assets/icfp3.jpg){:width="50%"}
-![ICFP4](/assets/icfp4.jpg){:width="49.9%"}
-![ICFP5](/assets/icfp5.jpg)
+{% include image-gallery.html folder="/assets/galleries/icfp" %}
 
 ## What comes next ?
 

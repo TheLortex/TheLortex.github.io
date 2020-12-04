@@ -1,0 +1,28 @@
+{% if include.full %}
+<div class="code">
+  <div>
+    <span class="code-ip">127.0.0.1@</span><span class="code-site">lortex.org:/{{ include.dir |strip }}</span><span class="code-font">$</span>
+    <span class="code-command">{{ include.command }}</span>
+  </div>
+  {% if include.output %}
+  <div class="code-output code-normal">{{ include.output }}</div>
+  {% endif %}
+</div>
+{% else %}
+<div class="code flexrow">
+  <div style="text-align: right;">
+    <span class="code-ip">127.0.0.1@</span><span class="code-site">lortex.org:/{{include.dir|strip}}</span><span class="code-font">$</span>&nbsp;
+    {% if include.output %}
+    <br />
+    <span class="code-font">~></span>&nbsp;
+    {% endif %}
+  </div>
+  <div>
+    <span class="code-command">{{ include.command }}</span>
+    {% if include.output %}
+    <br />
+    <div class="code-output">{{ include.output }}</div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}

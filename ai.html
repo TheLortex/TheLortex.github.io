@@ -1,33 +1,45 @@
 ---
 layout: default
 ---
+
+{% capture content %}
+<div class="rowcontent">
+  <h2>Learning Sudoku rules with conditional random fields</h2>
+  <p class="it">2017: EPFL - CVlab internship, under the supervision of Pierre Baqué and Pascal Fua</p>
+  <p>
+    Combining backpropagation with Mean-Field inference models: the goal was
+    to study these techniques in order to learn the rules of Sudoku as an
+    ill-posed problem. Indeed given a grid it's possible to have multiple
+    valid solutions. Pierre Baqué's (my internship mentor) Multi-Modal
+    Mean-Field model should be able to cope with that kind of problems,
+    combined with traditional machine learning techniques.
+  </p>
+  <p>
+    Learning the Sudoku rules as a set of constraints have been a success for
+    the 4x4 version but I faced combinatorial difficulties in the 9x9
+    (traditional Sudoku) case, as inferring correct grids given a set of CRF
+    constraints was proven to be a hard problem.
+  </p>
+  <ul>
+    <li>
+      <a href="//github.com/TheLortex/mean-field-inference">Github</a>
+      repository
+    </li>
+    <li>
+      Internship
+      <a id="mf" href="assets/rapport-EPFL.pdf">report </a> (French)
+    </li>
+  </ul>
+</div>
+{% endcapture %}
+
+{% capture dir %}
+{% include dir.html %}
+{% endcapture %}
+
 <div id="content_container">
+  {% include code.html command="ls" output="sudoku/" dir=dir %}
   <div class="row">
-    <h2>Learning Sudoku rules with conditional random fields</h2>
-    <p class="it">2017: EPFL - CVlab internship, under the supervision of Pierre Baqué and Pascal Fua</p>
-    <p>
-      Combining backpropagation with Mean-Field inference models: the goal was
-      to study these techniques in order to learn the rules of Sudoku as an
-      ill-posed problem. Indeed given a grid it's possible to have multiple
-      valid solutions. Pierre Baqué's (my internship mentor) Multi-Modal
-      Mean-Field model should be able to cope with that kind of problems,
-      combined with traditional machine learning techniques.
-    </p>
-    <p>
-      Learning the Sudoku rules as a set of constraints have been a success for
-      the 4x4 version but I faced combinatorial difficulties in the 9x9
-      (traditional Sudoku) case, as inferring correct grids given a set of CRF
-      constraints was proven to be a hard problem.
-    </p>
-    <ul>
-      <li>
-        <a href="//github.com/TheLortex/mean-field-inference">Github</a>
-        repository
-      </li>
-      <li>
-        Internship
-        <a id="mf" href="assets/rapport-EPFL.pdf">report </a> (French)
-      </li>
-    </ul>
+    {% include code.html command="make -C sudoku introduction" full=true dir=dir output=content %}
   </div>
 </div>
