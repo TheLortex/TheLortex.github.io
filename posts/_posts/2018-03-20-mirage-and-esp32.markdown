@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Mirage on embedded devices: where are we?"
+name: mirage-and-esp32.md
 date:   2018-03-20 12:13:37 +0000
 categories: mirage ocaml-native-backend esp32
 excerpt: As an intern at the OCamlLab, my project is to port MirageOS on ESP32 boards. This is my first post to explain a bit what is the subject, give some links, hints on what is to be done. 

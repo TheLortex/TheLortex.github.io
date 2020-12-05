@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "The Xtensa architecture"
+name: the-xtensa-architecture.md
 date:   2018-03-28 10:13:37 +0000
 categories: esp32
 excerpt: Let's have an insight on what kind of processor ESP32 boards rely on. A lot of standard stuff but my attention will be drawn on something called "windowed registers"

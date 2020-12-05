@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Build your own Mirage application!"
+name: build-your-own-mirage.md
 date:   2018-06-22 15:13:37 +0000
 categories: mirage esp32
 excerpt: A month after the first proof of concept, work has been done and here is how you can start to experiment with Mirage on ESP32 chips.

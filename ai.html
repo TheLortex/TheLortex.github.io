@@ -38,7 +38,6 @@ layout: default
 {% endcapture %}
 
 <div id="content_container">
-  {% include code.html command="ls" output="sudoku/" dir=dir %}
   <div class="row">
     {% include code.html command="make -C sudoku introduction" full=true dir=dir output=content %}
   </div>

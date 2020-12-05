@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "A Mirage unikernel running on an ESP32"
+name: success.md
 date:   2018-05-04 15:13:37 +0000
 categories: mirage esp32
 excerpt: I finally hacked my way into running a first Mirage hello world!

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "What now?"
+name: what-now.md
 date:   2018-10-02 12:00:00 +0000
 categories: mirage esp32
 excerpt: My OCaml Labs internship is done, and my ESP32 work has been presented at ICFP 2018's OCaml Workshop. So what's next ?

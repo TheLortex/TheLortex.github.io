@@ -2,55 +2,61 @@
 layout: default
 ---
 
+{% capture dir %}
+{% include dir.html %}
+{% endcapture %}
+
+{% capture header %}
+<div style="font-size: 1.15em;">
+  {%- if page.title -%}
+  <span>- blog: {{ page.title }}</span><br />
+  {%- endif -%} {%- if site.categories.status.size > 0 -%}
+  {%- for post in site.categories.status -%}
+  <span>- status_post:
+    <a href="{{ post.url | relative_url }}">
+      {{ post.title | escape }}
+    </a>
+  </span><br />
+  {%- if site.show_excerpts -%}
+  - description: <span style="color: #ccc;">{{ post.excerpt }}</span>
+  {%- endif -%}
+  {%- endfor -%}
+  {%- endif -%}
+  {{ content }}
+</div>
+{% endcapture %}
+
+{% capture posts %}
+<div>
+  {%- for post in site.categories.posts -%}
+  {%- assign date_format = site.minima.date_format | default: "%b %d, %Y"
+    -%}
+  <div style="display: flex;">
+    <span class="post-meta">{{ post.date | date: date_format }}</span>
+    <div style="flex: 1;">
+      <a class="post-link" href="{{ post.url | relative_url }}">
+        {{ post.title | escape }}
+      </a><br />
+      {%- if site.show_excerpts -%}
+      <span class="post-desc">
+        {{ post.excerpt }}
+      </span>
+    </div>
+  </div>
+  {%- endif -%}
+  <br />
+  {%- endfor -%}
+</div>
+{% endcapture %}
+
 <div>
   <div class="row">
-    {%- if page.title -%}
-    <h2 class="page-heading">{{ page.title }}</h2>
-    {%- endif -%} {%- if site.categories.status.size > 0 -%}
-    <ul class="post-list">
-      {%- for post in site.categories.status -%}
-      <li>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-        {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
-
-    {%- endif -%}
-
-    {{ content }}
+    {% include code.html command="make status" dir=dir output=header %}
   </div>
 
+  {%- if site.categories.posts.size > 0 -%}
   <div class="row">
-    {%- if site.categories.posts.size > 0 -%}
-    <h2 class="post-list-heading ">
-      {{ page.list_title | default: "Posts" }}
-    </h2>
-  </div>
-  <div class="row">
-    <ul class="post-list">
-      {%- for post in site.categories.posts -%}
-      <li>
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y"
-        -%}
-        <h3>
-          <span class="post-meta">{{ post.date | date: date_format }}</span>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-        {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
+    {% include code.html command="ls -l posts/" dir=dir output=posts %}
   </div>
 
   {%- endif -%}

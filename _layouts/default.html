@@ -8,7 +8,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet"> 
   <link href="/css/main.css" rel="stylesheet" />
 </head>
 
@@ -26,23 +25,23 @@
       <span style="color: gray;">name</span>
       {% endcapture %}
       {% include code.html command="ls" output=menu %}
-
-
+    </nav>
+    <div>
       {% capture dir %}
       {% include dir.html %}
       {% endcapture %}
       {% capture cd %}
-      cd {{dir}}
+      cd {% include fulldir.html %}
       {% endcapture %}
       {% include code.html command=cd %}
-    </nav>
+    </div>
     <div id="content">
       {{ content }}
     </div>
     {% capture footer %}
     <span id="footer">
       Made with 🦆 by TheLortex - powered by <a href="https://jekyllrb.com/">Jekyll</a> and <a
-          href="https://pages.github.com/">Github Pages</a>
+        href="https://pages.github.com/">Github Pages</a>
     </span>
     {% endcapture %}
     <div style="flex:1"></div>

@@ -1,11 +1,15 @@
 ---
 layout: default
 ---
+
+{% capture dir %}
+{% include dir.html %}
+{% endcapture %}
+
+{% include code.html command="eog *.jpg" full=true dir=dir %}
+
 <div id="content_container">
   <div class="row">
     {% include image-gallery.html folder="/assets/galleries/pics" %}
-  </div>
-  <div class="row bg-orange" id="desc" style="font-size: 23px;">
-    I also like to take pictures. 
   </div>
 </div>

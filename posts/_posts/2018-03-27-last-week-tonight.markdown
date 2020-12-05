@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Last week report"
+name: last-week-tonight.md
 date:   2018-03-27 11:13:37 +0000
 categories: ocaml-native-backend esp32
 excerpt: Assembly, code generation and debugging fun!

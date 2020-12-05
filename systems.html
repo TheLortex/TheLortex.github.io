@@ -6,7 +6,7 @@ layout: default
 {% endcapture %}
 
 {% capture mirage_dune %}
-<div class="rowcontent">
+<div class="code-normal">
   <h2>
     MirageOS on ESP32: a tale of build systems
   </h2>
@@ -26,7 +26,7 @@ layout: default
 {% endcapture %}
 
 {% capture esp32 %}
-<div class="rowcontent">
+<div class="code-normal">
   <h2>
     OCaml on ESP32: a tale of cross-compilation
   </h2>
@@ -62,7 +62,7 @@ layout: default
 {% endcapture %}
 
 {% capture windos %}
-<div class="rowcontent">
+<div class="code-normal">
   <h2>WindOS: the light Raspberry Pi operating system</h2>
   <p class="it">2016: ENS - school project, under the supervision of Marc Pouzet and Timothy Bourke</p>
   <p>
@@ -76,17 +76,28 @@ layout: default
 </div>
 {% endcapture %}
 
+{% capture esppic %}
+<div style="width: 50%; margin: 25%">
+  <img src="assets/ocamllabs.png" alt="ocaml labs logo" style="border: none;border-radius: 10px" />
+</div>
+{% endcapture %}
+
+{% capture taridespic %}
+<div style="width: 50%; margin: 25%">
+  <img src="assets/tarides.png" alt="tarides logo" style="border: none;" />
+</div>
+{% endcapture %}
+
 
 <div id="content_container">
-  {% include code.html command="ls" output="mirage+dune/ esp32/ windos/" dir=dir %}
   <div class="row">
-    {% include code.html command="make -C mirage+dune introduction" full=true dir=dir output=mirage_dune %}
+    {% include code.html command="make -C mirage+dune introduction" dir=dir output=mirage_dune picture=taridespic %}
   </div>
   <div class="row">
-    {% include code.html command="make -C esp32 introduction" full=true dir=dir output=esp32 %}
+    {% include code.html command="make -C esp32 introduction" dir=dir output=esp32 picture=esppic %}
   </div>
   <div class="row">
-    {% include code.html command="make -C windos introduction" full=true dir=dir output=windos %}
+    {% include code.html command="make -C windos introduction" dir=dir output=windos %}
   </div>
 
 </div>
