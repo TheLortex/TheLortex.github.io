@@ -106,6 +106,10 @@ h2 {
 
 a,
 .orange {
+  color: #ffe2be;
+}
+
+a[href*="//"]:not([href*="lortex.org"]) {
   color: #ff9f29;
 }
 
@@ -115,10 +119,6 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-.it {
-  font-style: italic;
 }
 
 

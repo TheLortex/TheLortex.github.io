@@ -5,43 +5,29 @@ layout: default
 {% include avatar.html %}
 {% endcapture %}
 {% capture content %}
-<div id="content-row" style="position: relative;">
-  <div class="post-content code-normal">
-    <!-- normal text -->
-    <div id="t1">
-      <p>
-        I am a French computer science student, it's currently my 4th year at the
-        École Normale Supérieure of Paris (see
-        <a href="http://diplome.di.ens.fr">diplome.di.ens.fr</a> for more
-        informations.). I'm now pursuing my second year of Master's Degree at
-        Paris-Dauphine: IASD -
-        <a href="https://www.lamsade.dauphine.fr/wp/iasd/en/">AI Systems and Data Science</a>.
-      </p>
-      <div class="flex">
-        What I like:
-        <div class="flex-1">
-          <ul class="nomargin">
-            <li><a href="assets/piticha.jpg">Cats</a>, <a href="assets/furets.jpg">ferrets</a> and <a
-                href="https://github.com/danluu/debugging-stories">debugging</a></li>
-            <li><a>Systems</a> programming</li>
-          </ul>
-        </div>
-        <div class="flex-1">
-          <ul class="nomargin">
-            <li>Artificial intelligence / <a>ML</a></li>
-            <li><a>Self</a>-hosting stuff</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+<div id="content-row" class="post-content code-normal" style="position: relative; padding-bottom: 12px;">
+  <p>
+    I am a French computer science student, it's currently my 5th year at the
+    <a href="https://diplome.di.ens.fr">École Normale Supérieure of Paris</a>.
+    Freshly graduated from PSL's <a href="https://www.lamsade.dauphine.fr/wp/iasd/en/"
+      title="AI Systems and Data Science">IASD</a> Master programme, I'm now on a gap year working full-term with <a
+      href="https://tarides.com">Tarides</a>.
+  </p>
+  <p>
+    My interests range from artificial intelligence to low-level compiler hacking. Coming from a research
+    education environment along with a long history of self-teaching, I like to tackle real-world challenge
+    with a practical mindset.
+  </p>
+  <p>
+    Other interests include <a href="assets/piticha.jpg">cats</a>, <a href="assets/furets.jpg">ferrets</a>, and photography.
+  </p>
 </div>
 
 {% endcapture %}
 {% capture info %}
-<div> {% include github.html %} 
+<div> {% include github.html %}
   <span class="wahou">TheLortex</span>
-   --> <a href="//github.com/TheLortex">github.com/TheLortex</a>
+  --> <a href="//github.com/TheLortex">github.com/TheLortex</a>
 </div>
 <div>
   <i class="material-icons">email</i>
@@ -55,14 +41,17 @@ layout: default
     <i class="material-icons">open_in_new</i>
     <span>
       <span class="wahou">cv.pdf</span>
+    </span>
   </span>
-  </span><div style="display: inline-block;">
+  <div style="display: inline-block;">
     &nbsp;&nbsp;&nbsp;-->
-    <a id="cv" href="cv_bw.pdf">../.assets/standard.pdf</a>
+    <span style="color: #ddd;">dec. 2020</span>
+    <a id="cv" href="assets/CV_standard.pdf">../.assets/CV_standard.pdf</a>
     <br />
     &nbsp;&nbsp;&nbsp;-->
-    <a id="cv_2" href="cv.pdf" class="rainbow-text">
-      ../.assets/funky.pdf
+    <span style="color: #ddd;">oct. 2019</span>
+    <a id="cv_2" href="assets/CV_funky.pdf" class="rainbow-text">
+      ../.assets/CV_funky.pdf
     </a>
   </div>
 </div>
@@ -70,7 +59,7 @@ layout: default
 {% capture projects %}
 <div id="esp_container">
   <span style="color: #ddd;">
-  2018
+    2018
   </span>
   <i class="material-icons">developer_board</i>
   <span class="wahou">MirageOS on ESP32</span>&nbsp;&nbsp;&nbsp;&nbsp;-->
@@ -80,7 +69,7 @@ layout: default
 </div>
 <div id="mf_inference">
   <span style="color: #ddd;">
-  2017
+    2017
   </span>
   <i class="material-icons">select_all</i>
   <span>
