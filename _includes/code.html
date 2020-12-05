@@ -1,29 +1,28 @@
 {% if include.full %}
 <div class="code">
-  <div>
-    <span class="code-site">lortex.org:/{{ include.dir |strip }}</span><span class="code-font">$</span>
-    <span class="code-command">{{ include.command }}</span>
+  <div class="code-prompt">
+    <span class="code-site">lortex.org:/{{ include.dir |strip }}</span><span class="code-font">$</span>&nbsp;
   </div>
+  <div class="code-command">{{ include.command }}</div>
   {% if include.output %}
-  <div class="code-output code-normal">{{ include.output }}</div>
+  <div class="code-output-full code-normal">{{ include.output }}</div>
   {% endif %}
 </div>
 {% else %}
-<div class="code flexrow">
-  <div style="text-align: right; width: fit-content; display: table;">
-    <div><span class="code-site">lortex.org:/{{include.dir|strip}}</span><span class="code-font">$</span>&nbsp;</div>
-    {% if include.picture %}
-    <div class="picture" style="display: table-caption; caption-side: bottom; padding: 16px;">
-      {{ include.picture }}
-    </div>
-    {% endif %}
+<div class="code">
+  <div class="code-prompt" style="text-align: right;">
+    <span class="code-site">lortex.org:/{{include.dir|strip}}</span><span class="code-font">$</span>&nbsp;
   </div>
-  <div style="flex: 1">
-    <span class="code-command">{{ include.command }}</span>
-    {% if include.output %}
-    <br />
-    <div class="code-output">{{ include.output }}</div>
-    {% endif %}
+  <div class="code-command">
+    {{ include.command }}
   </div>
+  {% if include.picture %}
+  <div class="code-picture picture" style="display: table-caption; caption-side: bottom; padding: 16px;">
+    {{ include.picture }}
+  </div>
+  {% endif %}
+  {% if include.output %}
+  <div class="code-output">{{ include.output }}</div>
+  {% endif %}
 </div>
 {% endif %}

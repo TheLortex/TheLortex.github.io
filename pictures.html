@@ -6,10 +6,12 @@ layout: default
 {% include dir.html %}
 {% endcapture %}
 
-{% include code.html command="eog *.jpg" full=true dir=dir %}
+{% capture output %}
+<div class="row">
+  {% include image-gallery.html folder="/assets/galleries/pics" %}
+</div>
+{% endcapture %}
 
 <div id="content_container">
-  <div class="row">
-    {% include image-gallery.html folder="/assets/galleries/pics" %}
-  </div>
+  {% include code.html command="eog *.jpg" full=true dir=dir output=output %}
 </div>
