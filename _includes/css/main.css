@@ -32,6 +32,7 @@
   font-style: normal;
   font-weight: 400;
   src: url("/assets/fonts/Material-Icons.woff2") format('woff2');
+  font-display: swap;
 }
 
 .material-icons {
@@ -51,7 +52,6 @@
   font-feature-settings: 'liga';
   -moz-osx-font-smoothing: grayscale;
 }
-
 
 @font-face {
   font-family: 'Lato';
@@ -135,7 +135,7 @@ title
 
 .code {
   border-top: solid rgb(45, 47, 53) 1px;
-  font-family: "Fira Code";
+  font-family: "Fira Code", monospace;
   padding-top: 4px;
   padding-bottom: 4px;
   display: grid;
@@ -230,7 +230,10 @@ title
   background-color: #ffffff08;
   padding: 0 8px;
   margin: 0 -8px;
-  font-size: 1.5em;
+}
+
+#title h1{ 
+  margin: 0;
 }
 
 
@@ -320,6 +323,7 @@ Menu
 #content_container p {
   margin-top: 10px;
   margin-bottom: 10px;
+  line-height: 1.5;
 }
 
 .flex {

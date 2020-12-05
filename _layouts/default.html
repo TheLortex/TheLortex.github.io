@@ -1,43 +1,48 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" initial-scale="1"  content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A French computer science student. "/>
   <title>Lucas Pluvinage</title>
   <link rel="icon" href="/favicon/favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="/css/main.css" rel="stylesheet" />
+  <style>
+    {% include css/main.css %}
+  </style>
 </head>
 
 <body>
   <div id="main-container" style="display: flex; flex-direction: column;">
-    <div id="title">
-      {% include code.html command="cat name" output="Lucas Pluvinage" %}
-    </div>
-    <nav id="menu_container">
-      {% capture menu %}
-      <a href="/" class="menu-entry {% if page.url == "/" %}selected{% endif %}">home/</a>
-      <a href="/systems" class="systems-entry {% if page.url contains "/systems" %}selected{% endif %}">systems/</a>
-      <a href="/ai" class="ai-entry {% if page.url contains "/ai" %}selected{% endif %}">ai/</a>
-      <a href="/pictures" class="pics-entry {% if page.url contains "/pictures" %}selected{% endif %}">pictures/</a>
-      <span style="color: gray;">name</span>
-      {% endcapture %}
-      {% include code.html command="ls" output=menu %}
-    </nav>
-    <div>
-      {% capture dir %}
-      {% include dir.html %}
-      {% endcapture %}
-      {% capture cd %}
-      cd {% include fulldir.html %}
-      {% endcapture %}
-      {% include code.html command=cd %}
-    </div>
-    <div id="content">
+    <header>
+      <div id="title">
+        {% include code.html command="cat name" output="<h1>Lucas Pluvinage</h1>" %}
+      </div>
+      <nav id="menu_container">
+        {% capture menu %}
+        <a href="/" class="menu-entry {% if page.url == "/" %}selected{% endif %}">home/</a>
+        <a href="/systems" class="systems-entry {% if page.url contains "/systems" %}selected{% endif %}">systems/</a>
+        <a href="/ai" class="ai-entry {% if page.url contains "/ai" %}selected{% endif %}">ai/</a>
+        <a href="/pictures" class="pics-entry {% if page.url contains "/pictures" %}selected{% endif %}">pictures/</a>
+        <span style="color: gray;">name</span>
+        {% endcapture %}
+        {% include code.html command="ls" output=menu %}
+      </nav>
+      <div>
+        {% capture dir %}
+        {% include dir.html %}
+        {% endcapture %}
+        {% capture cd %}
+        cd {% include fulldir.html %}
+        {% endcapture %}
+        {% include code.html command=cd %}
+      </div>
+    </header>
+    <main id="content">
       {{ content }}
-    </div>
+    </main>
     {% capture footer %}
     <span id="footer">
       Made with 🦆 by TheLortex - powered by <a href="https://jekyllrb.com/">Jekyll</a> and <a
@@ -45,9 +50,9 @@
     </span>
     {% endcapture %}
     <div style="flex:1"></div>
-    <div style="background-color: #00000040; margin: 0 -8px; padding: 0 8px; opacity: 0.5;">
+    <footer style="background-color: #00000040; margin: 0 -8px; padding: 0 8px; opacity: 0.5;">
       {% include code.html dir=dir command="poweroff" output=footer %}
-    </div>
+    </footer>
   </div>
 </body>
 
