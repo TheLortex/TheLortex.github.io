@@ -1,0 +1,32 @@
+---
+title: "TheoremKB"
+date: "2020"
+location: "ENS - DI VALDA, Paris, France"
+description: "A knowledge base of mathematical results"
+slug: "theoremkb"
+variant: "projects"
+hero_image: "./theoremkb.png"
+hero_image_alt: "TheoremKB"
+tags: ["machine learning"]
+---
+
+<div class="code-normal">
+  <h2>TheoremKB: a knowledge base of mathematical results</h2>
+  <em>2020: ENS - DI VALDA internship, under the supervision of <a href="//pierre.senellart.com">Pierre Senellart</a></em>
+  <p>
+    TheoremKB is a project led by Pierre Senellart whose goal is to build semantic knowledge from a collection of scientific articles in the PDF format. One of the key goals of TheoremKB is to be able to compute the graph of theoretical results from a given research topic. In this graph, an edge is drawn from a result A to result B when B is used in the proof of A. Having a finer resolution than the citation graph, as nodes are individual results instead of whole documents, this graph should allow deducing interesting facts on scientific research, such as whether we can find proof cycles among papers (which would be possible as some authors cite not yet published content), or what results are impacted if a proof is found to be incorrect. The project aims at making bibliographical work easier by having a deeper understanding of how papers are related to each other. 
+  </p>
+  <p>
+    I have developped a set of tools and libraries to perform <em>theorem extraction</em> using conditional random fields. While it doesn't beat state-of-the-art methods, the framework will allow building more complex algorithms performing information extraction in the TheoremKB project.
+  </p>
+  <ul>
+    <li>
+      <a href="//github.com/PierreSenellart/TheoremKB">Github</a>
+      repository
+    </li>
+    <li>
+      Internship
+      <a href="https://hal.inria.fr/hal-02956526/document">report </a> <em>(HAL: A Knowledge Base of Mathematical Results, Extracting scientific results from research articles)</em>
+    </li>
+  </ul>
+</div>

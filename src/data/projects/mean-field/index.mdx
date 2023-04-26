@@ -1,0 +1,30 @@
+---
+title: "Mean-field"
+date: "2017"
+location: "EPFL - CVLab, Lausanne, Switzerland"
+description: "Learning Sudoku rules with conditional random fields"
+hero_image: "./sudoku.jpg"
+hero_image_alt: "Sudoku"
+tags: ["machine learning"]
+slug: "mean-field"
+variant: "projects"
+---
+
+import Report from "./rapport-EPFL.pdf"
+
+Internship under the supervision of Pierre Baqué and Pascal Fua
+
+Combining backpropagation with Mean-Field inference models: the goal was
+to study these techniques in order to learn the rules of Sudoku as an
+ill-posed problem. Indeed given a grid it's possible to have multiple
+valid solutions. Pierre Baqué's (my internship mentor) Multi-Modal
+Mean-Field model should be able to cope with that kind of problems,
+combined with traditional machine learning techniques.
+
+Learning the Sudoku rules as a set of constraints have been a success for
+the 4x4 version but I faced combinatorial difficulties in the 9x9
+(traditional Sudoku) case, as inferring correct grids given a set of CRF
+constraints was proven to be a hard problem.
+
+- [Github](//github.com/TheLortex/mean-field-inference) repository
+- Internship <a href={Report}>report</a>

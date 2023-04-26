@@ -1,0 +1,52 @@
+---
+title: "MirageOS on ESP32 chips"
+date: "2018"
+location: "Cambridge, UK"
+description: "Writing a compiler backend for OCaml, and porting MirageOS to ESP32 chips"
+hero_image: "./ocamllabs.webp"
+hero_image_alt: "OCamllabs logo"
+tags: ["ocaml", "systems"]
+slug: "esp32"
+variant: "projects"
+---
+
+import Ocaml2018 from "./ocaml2018.pdf";
+import Report from "./report-ocaml-esp32.pdf";
+
+<div class="code-normal">
+  <h2>OCaml on ESP32: a tale of cross-compilation</h2>
+  <em>
+    2018: University of Cambridge - OCamlLabs internship, under the supervision
+    of Anil Madhavapeddy
+  </em>
+  <p>
+    During my Master's degree internship at
+    <a href="//ocamllabs.io/">OCamlLabs</a> - Cambridge, I've been working on porting
+    the <a href="//ocaml.org/">OCaml</a> compiler to the
+    <a href="//www.espressif.com/en/products/hardware/esp32/overview">ESP32</a>
+    microcontroller. It's a low-budget, high-connectivity chipset which embeds a
+    dual-core 240MHz processor along with Wifi and Bluetooth networking. It's an
+    ideal platform for small connected devices that require low-cost, low-power but
+    sufficient computing capabilities.
+  </p>
+  <p>
+    I've been able to add a new native compilation backend for the OCaml
+    compiler, and successfully ported the base layer of
+    <a href="//mirage.io">MirageOS</a>, along with the networking layer.
+  </p>
+  <p>Some resources:</p>
+  <ul>
+    <li>
+      The <a href="esp32">blog</a>
+    </li>
+    <li>
+      The internship <a href={Report}>report</a>
+    </li>
+    <li>
+      The <a href="//github.com/well-typed-lightbulbs/">Github</a> organisation
+    </li>
+    <li>
+      <a href={Ocaml2018}>Abstract</a> for ICFP'18 talk
+    </li>
+  </ul>
+</div>

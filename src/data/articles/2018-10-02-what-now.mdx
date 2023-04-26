@@ -1,0 +1,112 @@
+---
+title: "What now?"
+slug: "what-now"
+date: "2018-10-02 10:00"
+category: "esp32"
+description: My OCaml Labs internship is done, and my ESP32 work has been presented at ICFP 2018's OCaml Workshop. So what's next ?
+variant: articles
+---
+
+## OCaml Labs internship overview
+
+My research on OCaml/ESP32 devices was done as a research project in Cambridge Computer Laboratory's [OCaml Labs](http://ocamllabs.io/). The internship lasted 5 months, from March to July 2018, and I worked under the supervision of [Anil Madhavapeddy](http://anil.recoil.org/). I presented my internship work on September 4, and I got a final mark of 18/20, confirming the validation of my first year of Master's degree in computer science !
+
+As a recap, I achieved:
+
+- a working OCaml native compilation backend for Xtensa architecture.
+- an opam distribution containing cross-compilation package support for ESP32.
+- decent Mirage integration, including:
+  - operating system features: time, events and collaborative threading.
+  - network features: TCP/IP, DHCP, DNS, HTTP, TLS.
+  - esp32 features: Wifi, LCD screen.
+  - mirage command line interface integration that allows easy builds.
+
+All the information you might need to actually use this project is available on the [status](https://www.lortex.org/status/2018/10/02/status.html) page.
+
+## ICFP 2018 - OCaml Workshop talk
+
+import Talk from "./ESP32_talk.pdf"
+
+My talk was accepted for the OCaml Workshop co-located with ICFP 2018 in Saint-Louis, USA. 
+- Informations on the talk are available on the ICFP 2018 website: [here](https://icfp18.sigplan.org/event/ocaml-2018-papers-ocaml-on-the-esp32-chip-well-typed-lightbulbs-await).
+A video will be available soon. 
+- You can find the slides <a href={Talk}>here</a>. Finally, here are some pictures!
+
+import Icfp1 from "../galleries/icfp/icfp1.jpg";
+import Icfp2 from "../galleries/icfp/icfp2.jpg";
+import Icfp3 from "../galleries/icfp/icfp3.jpg";
+import Icfp4 from "../galleries/icfp/icfp4.jpg";
+import Icfp5 from "../galleries/icfp/icfp5.jpg";
+
+<div
+  style={{
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    flexWrap: "wrap",
+  }}
+>
+  <img
+    src={Icfp1}
+    style={{
+      flex: 1,
+      display: "block",
+      flexBasis: 0,
+      width: "20%",
+      height: "auto",
+    }}
+  />
+  <img
+    src={Icfp2}
+    style={{
+      flex: 1,
+      display: "block",
+      flexBasis: 0,
+      width: "40%",
+      height: "auto",
+    }}
+  />
+  <img
+    src={Icfp3}
+    style={{
+      flex: 1,
+      display: "block",
+      flexBasis: 0,
+      width: "40%",
+      height: "auto",
+    }}
+  />
+  <img
+    src={Icfp4}
+    style={{
+      flex: 1,
+      display: "block",
+      flexBasis: 0,
+      width: "20%",
+      height: "auto",
+    }}
+  />
+  <img
+    src={Icfp5}
+    style={{
+      flex: 1,
+      display: "block",
+      flexBasis: 0,
+      width: "20%",
+      height: "auto",
+    }}
+  />
+</div>
+
+## What comes next ?
+
+I'll pause my ESP32 work, to focus on other fields and courses for a semester. However this is not the end of the project and there remains a lot to achieve. Things that I want to do include building new libraries to take advantage of ESP32 features and make them available trough Mirage abstractions.
+
+TODO:
+
+- Programming Ultra-Low Power processor
+- Reading sensors
+- Integrating sensors in the event system
+- Bluetooth integration
+- Reducing OCaml memory footprint
+- Benchmarking

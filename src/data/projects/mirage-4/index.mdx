@@ -1,0 +1,41 @@
+---
+title: "MirageOS 4"
+date: "2019"
+location: "Cambridge, UK"
+description: "A deep build system change to enable cross-compilation on exotic targets"
+slug: "mirage-4"
+variant: "projects"
+hero_image: "./tarides.webp"
+hero_image_alt: "Tarides logo"
+tags: ["ocaml", "systems"]
+---
+
+import Ocaml2019 from "./ocaml2019.pdf";
+
+<div class="code-normal">
+  <h2>MirageOS on ESP32: a tale of build systems</h2>
+  <em>
+    2019: Tarides fixed-term contract, under the supervision of Thomas
+    Gazagnaire
+  </em>
+  <em>Late 2020: Back with Tarides to finish the work</em>
+  <p>
+    Following my Cambridge internship, I've been working for 5 months at
+    <a href="//tarides.com">Tarides</a>, a startup company focusing on the OCaml
+    ecosystem to build functional systems. The goal was to make the ESP32 port first
+    class in the Mirage ecosystem, but it actually required deep build system changes.
+    This work is not quite finished but most of the port to <a href="//dune.build">
+      Dune
+    </a> has been achieved.
+  </p>
+  <ul>
+    <li>
+      <a href={Ocaml2019}>Abstract</a> for ICFP'19 talk
+    </li>
+    <li>
+      Go down the{" "}
+      <a href="https://github.com/mirage/mirage/issues/1195">rabbit hole</a>{" "}
+      (Github issue)
+    </li>
+  </ul>
+</div>

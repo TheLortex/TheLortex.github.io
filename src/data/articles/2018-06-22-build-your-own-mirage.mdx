@@ -1,0 +1,55 @@
+---
+title:  "Build your own Mirage application!"
+slug: "build-your-own-mirage"
+date:   "2018-06-22" 
+category: "esp32"
+description: A month after the first proof of concept, work has been done and here is how you can start to experiment with Mirage on ESP32 chips.
+variant: articles
+---
+## Well-typed lightbulb organisation
+
+All my work can now be found in the [`well-typed-lightbulb`](https://github.com/well-typed-lightbulbs) Github organisation! It consists in:
+* `ocaml-esp32`: OCaml 4.06 compiler with an `xtensa-esp32-elf` configuration option.
+* `opam-cross-esp32`: Opam repository to cross-compile packages to the ESP32 target.
+* `mirage-*-esp32`: Mirage libraries for ESP32.
+* `mirage`: Mirage CLI to configure an ESP32 unikernel.
+* `wifi-esp32`: Wifi bindings at the interface between OCaml and the C driver.
+* `lcd-esp32`: LCD bindings for the SPI LCD display on the ESP32 WROVER kit.
+* And some forks needed for Mirage on ESP32 development.
+
+## How to use these tools
+
+I have ported more than 80 packages to cross-compile on ESP32. They are not available on the official opam repo and you need to use my custom github repo.
+An OCaml 4.06 32bit compiler is the only prerequisite for ESP32 cross-compilation. Make you are in an appropriate switch (`4.06.0+32bit` for example).
+After that, you can setup my custom opam repository.
+```
+opam repo add git https://github.com/well-typed-lightbulbs/opam-cross-esp32.git
+```
+You'll be able to install the mirage configuration tool fork:
+```
+opam install mirage
+```
+
+After that you'll be able to build unikernels with these steps:
+* `mirage config -t esp32` to setup an ESP32 application.
+* `make depends` will automatically install the ESP toolchain, the OCaml cross-compiler for ESP32 architecture and cross-compile Mirage libraries.
+* You can then configure your ESP32 application by using `make menuconfig`. From there you can tweak a lot of settings, but you just have to make sure that the flash size is higher than 2MB and to input the correct serial port (`/dev/ttyUSB0` or `/dev/ttyUSB1` in general).
+* Then `mirage build`
+* And finally `make flash monitor`
+
+## Program your unikernel
+
+### Features
+
+* Wifi access point and station (both can be operating at the same time) that can be accessed trought Mirage's network interface (`netif "sta"` or `netif "ap"`).
+* LCD screen can be programmed trough `lcd-esp32` library.
+* Wifi events can be used with `wifi-esp32` library.
+
+### Samples 
+
+* Some sample unikernels: [`mirage-esp32-samples`](https://github.com/well-typed-lightbulbs/mirage-esp32-samples)
+* Docker scripts of the whole build process: [`esp32-docker-samples`](https://github.com/well-typed-lightbulbs/esp32-docker-samples)
+
+## Remaining work awaits
+
+There remains a lot of documentation and optimisations to do! I hope to reduce even further the size of Mirage binaries, and especially dynamic memory consumption! For now, only very simple Mirage applications can hold on a 512KB of RAM chip. Hopefully all the unikernels I tested fit on my 4MB of RAM development board.
