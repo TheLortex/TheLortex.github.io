@@ -5,6 +5,8 @@ import * as React from "react";
 import { Link, type HeadFC, type PageProps } from "gatsby";
 import { Avatar } from "../images/Avatar";
 
+import "../styles/global.css";
+
 const CustomLi = (props: {
   children: React.ReactNode;
   selected?: boolean;
@@ -45,8 +47,8 @@ const CustomLi = (props: {
               backgroundColor: "white",
               border: "4px black solid",
               borderRadius: "100%",
-              width: "16px",
-              height: "16px",
+              width: "24px",
+              height: "24px",
               position: "absolute",
               zIndex: 1000,
               top: "-6px",
@@ -166,7 +168,7 @@ export const Layout = (props: {
       sx={{
         paddingX: [1, 4],
         paddingY: 2,
-        fontFamily: "SF Pro Display",
+        paddingBottom: 4,
         a: {
           color: "secondary",
         },

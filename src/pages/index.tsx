@@ -47,11 +47,11 @@ const IndexPage: React.FC<PageProps> = (props: PageProps) => {
         </div>
         <div sx={{ flex: 1 }}>
           <p>
-            Freshly out of the{" "}
+            Freshly of the{" "}
             <a id="link-ens" href="https://diplome.di.ens.fr">
               École Normale Supérieure of Paris
-            </a>
-            . Graduating from PSL's{" "}
+            </a>{" "}
+             and graduating from PSL's{" "}
             <a
               id="link-iasd"
               href="https://www.lamsade.dauphine.fr/wp/iasd/en/"

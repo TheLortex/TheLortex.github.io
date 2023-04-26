@@ -6,8 +6,7 @@ const s = {
     secondary: "#51697B",
   },
   fonts: {
-    body: "system-ui, SF Pro Display",
-    heading: "SF Pro Display, serif"
+    body: "Lato"
   },
   links: {
     nav: {
