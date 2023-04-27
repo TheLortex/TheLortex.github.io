@@ -96,7 +96,7 @@ const CustomLi = (props: {
               sx={{
                 position: "absolute",
                 width: "1000px",
-                bottom: "-8px",
+                bottom: "6px",
                 left: "-4px",
               }}
             >
@@ -106,6 +106,7 @@ const CustomLi = (props: {
                   flexDirection: "row",
                   alignItems: "center",
                   gap: 3,
+                  height: 0
                 }}
               >
                 <div
@@ -166,7 +167,7 @@ export const Layout = (props: {
   return (
     <main
       sx={{
-        paddingX: [1, 4],
+        paddingX: [3, 4],
         paddingY: 2,
         paddingBottom: 4,
         a: {

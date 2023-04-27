@@ -13,7 +13,7 @@ export const tagsColor = {
   ocaml: "#FFDEB4",
   "machine learning": "#B5A8FF",
   hardware: "#FDF7C3",
-  default: "#ccf",
+  default: "#c8c8ff",
 };
 
 const Projects = (props: PageProps<Queries.ProjectsQuery>) => {
@@ -66,10 +66,13 @@ const Projects = (props: PageProps<Queries.ProjectsQuery>) => {
                       margin: 2,
                       maxWidth: fm.hero_image ? "450px" : "300px",
                       minWidth: "200px",
-                      borderRadius: 10,
+                      borderRadius: 16,
                       backgroundColor:
-                        tagsColor[(fm.tags ?? ["default"])[0]] ??
-                        tagsColor.default,
+                        (tagsColor[(fm.tags ?? ["default"])[0]] ??
+                          tagsColor.default) + "40",
+                      border:
+                        "solid " + (tagsColor[(fm.tags ?? ["default"])[0]] ??
+                          tagsColor.default) + " 8px",
                     }}
                   >
                     <div

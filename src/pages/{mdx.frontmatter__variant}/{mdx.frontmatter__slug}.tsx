@@ -19,8 +19,15 @@ const Projects = (props: PageProps<Queries.ProjectQuery>) => {
       page={props.data.mdx?.frontmatter?.variant!}
       article={props.data.mdx?.frontmatter?.title}
     >
-      <div sx={{ backgroundColor, padding: [1, 3], paddingX: [2, 4], borderRadius: 40 }}>
-        {props.children}
+      <div sx={{ padding: [1, 3] }}>
+        <div
+          sx={{
+            borderLeft: "solid " + backgroundColor + " 8px",
+            paddingX: [2, 4],
+          }}
+        >
+          {props.children}
+        </div>
       </div>
     </Layout>
   );

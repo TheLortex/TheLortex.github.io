@@ -8,6 +8,7 @@ import { Layout } from "../components/Layout";
 
 import Piticha from "../images/piticha.jpg";
 import Furets from "../images/furets.jpg";
+import CV from "../data/CV_funky.pdf";
 
 const IndexPage: React.FC<PageProps> = (props: PageProps) => {
   return (
@@ -51,7 +52,7 @@ const IndexPage: React.FC<PageProps> = (props: PageProps) => {
             <a id="link-ens" href="https://diplome.di.ens.fr">
               École Normale Supérieure of Paris
             </a>{" "}
-             and graduating from PSL's{" "}
+            and graduating from PSL's{" "}
             <a
               id="link-iasd"
               href="https://www.lamsade.dauphine.fr/wp/iasd/en/"
@@ -215,6 +216,7 @@ const IndexPage: React.FC<PageProps> = (props: PageProps) => {
           <span>@</span>
           <span>pluvina.ge</span>
         </Pill>
+        <Pill href={CV} id="CV" />
       </div>
     </Layout>
   );
@@ -223,7 +225,7 @@ const IndexPage: React.FC<PageProps> = (props: PageProps) => {
 const Pill = (props: {
   id: string;
   href: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }) => (
   <a
     sx={{
@@ -257,7 +259,7 @@ const Pill = (props: {
     >
       {props.id}
     </div>
-    <div sx={{ borderLeft: "solid #fff8 1px" }}></div>
+    {props.children && <div sx={{ borderLeft: "solid #fff8 1px" }}></div>}
     {props.children}
   </a>
 );
