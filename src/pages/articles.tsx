@@ -7,6 +7,7 @@ import { Layout } from "../components/Layout";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import ReactMarkdown from "react-markdown";
 import { tagsColor } from "./projects";
+import { SiteHead } from "../components/Head";
 
 const IndexPage = (props: PageProps<Queries.ArticlesQuery>) => {
   return (
@@ -20,16 +21,18 @@ const IndexPage = (props: PageProps<Queries.ArticlesQuery>) => {
               .filter((node) => node.childMdx?.frontmatter?.title)
               .map((node, i) => {
                 const fm = node.childMdx?.frontmatter!;
+                const color =
+                  tagsColor[(fm.tags ?? ["default"])[0]] ?? tagsColor.default;
                 return (
                   <div
                     key={fm.title}
                     sx={{
                       margin: 2,
                       maxWidth: 450 + (i % 3) * 20 - (i % 2) * 10,
-                      borderRadius: 10,
-                      backgroundColor:
-                        tagsColor[(fm.tags ?? ["default"])[0]] ??
-                        tagsColor.default,
+                      borderTopRightRadius: 24,
+                      borderBottomRightRadius: 24,
+                      backgroundColor: color + "40",
+                      borderLeft: "solid " + color + " 8px",
                     }}
                   >
                     <div
@@ -70,6 +73,9 @@ const IndexPage = (props: PageProps<Queries.ArticlesQuery>) => {
                               borderBottomRightRadius: "16px",
                               padding: 1,
                               paddingX: 2,
+                              marginLeft: "-8px",
+                              border: "solid " + color + " 4px",
+                              borderLeft: "none",
                             }}
                           >
                             {fm.date}
@@ -137,4 +143,4 @@ export const query = graphql`
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Articles</title>;
+export const Head: HeadFC = () => <SiteHead title="Articles" />;

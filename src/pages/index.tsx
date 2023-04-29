@@ -9,6 +9,7 @@ import { Layout } from "../components/Layout";
 import Piticha from "../images/piticha.jpg";
 import Furets from "../images/furets.jpg";
 import CV from "../data/CV_funky.pdf";
+import { SiteHead } from "../components/Head";
 
 const IndexPage: React.FC<PageProps> = (props: PageProps) => {
   return (
@@ -266,4 +267,4 @@ const Pill = (props: {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Lucas Pluvinage</title>;
+export const Head: HeadFC = () => <SiteHead />;

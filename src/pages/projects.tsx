@@ -6,6 +6,7 @@ import { Link, graphql } from "gatsby";
 import { Layout } from "../components/Layout";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import ReactMarkdown from "react-markdown";
+import { SiteHead } from "../components/Head";
 
 export const tagsColor = {
   forevr: "#B5A8FF",
@@ -66,11 +67,12 @@ const Projects = (props: PageProps<Queries.ProjectsQuery>) => {
                       margin: 2,
                       maxWidth: fm.hero_image ? "450px" : "300px",
                       minWidth: "200px",
-                      borderRadius: 16,
+                      borderTopRightRadius: 24,
+                      borderBottomRightRadius: 24,
                       backgroundColor:
                         (tagsColor[(fm.tags ?? ["default"])[0]] ??
                           tagsColor.default) + "40",
-                      border:
+                      borderLeft:
                         "solid " + (tagsColor[(fm.tags ?? ["default"])[0]] ??
                           tagsColor.default) + " 8px",
                     }}
@@ -160,4 +162,4 @@ export const query = graphql`
 
 export default Projects;
 
-export const Head: HeadFC = () => <title>Projects</title>;
+export const Head = () => <SiteHead title="Projects" />;

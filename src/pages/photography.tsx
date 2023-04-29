@@ -6,6 +6,7 @@ import { graphql, type HeadFC, type PageProps } from "gatsby";
 import { Layout } from "../components/Layout";
 import PhotoAlbum from "react-photo-album";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { SiteHead } from "../components/Head";
 
 const IndexPage = (props: PageProps<Queries.PhotosQuery>) => {
   return (
@@ -45,4 +46,4 @@ export const query = graphql`
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Photography</title>;
+export const Head: HeadFC = () => <SiteHead title="Photography" />;

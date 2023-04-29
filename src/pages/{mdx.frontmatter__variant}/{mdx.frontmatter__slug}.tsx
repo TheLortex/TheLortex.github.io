@@ -1,12 +1,13 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 
-import type { HeadFC, PageProps } from "gatsby";
+import type { HeadFC, HeadProps, PageProps } from "gatsby";
 import { Link, graphql } from "gatsby";
 import { Layout } from "../../components/Layout";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import ReactMarkdown from "react-markdown";
 import { tagsColor } from "../projects";
+import { SiteHead } from "../../components/Head";
 
 const Projects = (props: PageProps<Queries.ProjectQuery>) => {
   const tags = props.data.mdx?.frontmatter?.tags;
@@ -58,4 +59,6 @@ export const query = graphql`
 
 export default Projects;
 
-export const Head: HeadFC = () => <title>Projects</title>;
+export const Head = (props: HeadProps<Queries.ProjectQuery>) => (
+  <SiteHead title={props.data.mdx?.frontmatter?.title ?? undefined} />
+);
