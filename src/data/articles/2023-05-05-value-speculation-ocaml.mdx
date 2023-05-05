@@ -113,18 +113,15 @@ computation.{" "}
 ![illustration of the delta computing mechanism ](./seum_delta_1.png)
 
 ```ocaml
-let rec seum (previous : int) (accu : int) (cell : int list) =
+let rec sum (previous : int) (accu : int) (cell : int list) =
   match cell with
   | [] -> accu
   | head::tail ->
     let current : int = Obj.magic cell in
-    (* equivalent to:
-    let delta = current - previous in
-    let prediction = current + delta in *)
     let prediction : int list =
       Obj.magic (2 * current - previous)
     in
-    seum
+    sum
       current
       (accu + head)
       (if prediction == tail then prediction else tail)
@@ -203,3 +200,8 @@ Per iteration:
 </h1>
 
 According the original article, we're now faster than the naive C implementation, but 2x slower than the hand-optimized one. This is all very synthetic but I found it quite interesting that OCaml is able to benefit from the same hacks as C. Of course this won't be useful in a lot of situations, but maybe one will gain some insights on how modern CPU are able to make programs go fast.
+
+---
+
+If you like this article I'd be glad to have your feedback. 
+Public discussion on [Twitter](https://twitter.com/TheLortex/status/1654563811569836032)
