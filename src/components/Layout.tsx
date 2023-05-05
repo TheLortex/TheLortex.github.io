@@ -106,7 +106,7 @@ const CustomLi = (props: {
                   flexDirection: "row",
                   alignItems: "center",
                   gap: 3,
-                  height: 0
+                  height: 0,
                 }}
               >
                 <div
@@ -147,6 +147,44 @@ const CustomLi = (props: {
       )}
     </li>
   );
+};
+
+import { MDXProvider } from "@mdx-js/react";
+import { Highlight, Prism } from "prism-react-renderer";
+
+(typeof global !== "undefined" ? global : window).Prism = Prism;
+require("prismjs/components/prism-ocaml");
+require("prismjs/components/prism-nasm");
+
+const component = {
+  pre: (props: {
+    children: { props: { className?: string; children: string } };
+  }) => {
+    const className = props.children.props.className || "";
+    const matches = className.match(/language-(?<lang>.*)/);
+    return (
+      <Highlight
+        code={props.children.props.children}
+        language={
+          matches && matches.groups && matches.groups.lang
+            ? matches.groups.lang
+            : "python"
+        }
+      >
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <pre className={className} style={style} sx={{ padding: 2 }}>
+            {tokens.map((line, i) => (
+              <div {...getLineProps({ line, key: i })}>
+                {line.map((token, key) => (
+                  <span {...getTokenProps({ token, key })} />
+                ))}
+              </div>
+            ))}
+          </pre>
+        )}
+      </Highlight>
+    );
+  },
 };
 
 type page = "index" | "projects" | "articles" | "photography";
@@ -228,7 +266,7 @@ export const Layout = (props: {
           paddingTop: 3,
         }}
       >
-        {props.children}
+        <MDXProvider components={component}>{props.children}</MDXProvider>
       </div>
     </main>
   );
