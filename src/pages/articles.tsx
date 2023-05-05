@@ -11,9 +11,9 @@ import { SiteHead } from "../components/Head";
 
 const IndexPage = (props: PageProps<Queries.ArticlesQuery>) => {
   return (
-    <Layout page="articles">
+    <Layout page="articles" large>
       {" "}
-      <div sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+      <div sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap-reverse" }}>
         {props.data.allFile.group.flatMap((group) => (
           <div sx={{ display: "flex", flexDirection: "column" }}>
             <h1>{group.fieldValue}</h1>
@@ -38,26 +38,10 @@ const IndexPage = (props: PageProps<Queries.ArticlesQuery>) => {
                     <div
                       sx={{
                         display: "flex",
-                        flexDirection: "row",
-                        gap: 3,
+                        flexDirection: "column",
+                        gap: 1,
                       }}
                     >
-                      {fm.hero_image && (
-                        <div
-                          sx={{
-                            alignSelf: "center",
-                            borderRadius: 8,
-                            overflow: "hidden",
-                            maxWidth: "50%",
-                          }}
-                        >
-                          <GatsbyImage
-                            image={getImage(fm.hero_image)}
-                            alt={fm.hero_image_alt}
-                          />
-                        </div>
-                      )}
-                      <div>
                         <div
                           sx={{
                             display: "flex",
@@ -88,7 +72,7 @@ const IndexPage = (props: PageProps<Queries.ArticlesQuery>) => {
                             </Link>
                           )}
                         </div>
-                        <div sx={{ padding: 3, paddingTop: 0 }}>
+                        <div sx={{ paddingX: 3 }}>
                           <p>{fm.description}</p>
                           {fm.inline && (
                             <ReactMarkdown>
@@ -96,7 +80,22 @@ const IndexPage = (props: PageProps<Queries.ArticlesQuery>) => {
                             </ReactMarkdown>
                           )}
                         </div>
-                      </div>
+                        {fm.hero_image && (
+                          <div
+                            sx={{
+                              alignSelf: "center",
+                              borderRadius: 8,
+                              marginBottom: 3,
+                              overflow: "hidden",
+                              maxWidth: "90%",
+                            }}
+                          >
+                            <GatsbyImage
+                              image={getImage(fm.hero_image)}
+                              alt={fm.hero_image_alt}
+                            />
+                          </div>
+                        )}
                     </div>
                   </div>
                 );
