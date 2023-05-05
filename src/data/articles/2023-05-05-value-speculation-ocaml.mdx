@@ -159,7 +159,7 @@ By moving the tail pointer load outside of the critical path, the CPU is able to
 
 ### Optimized
 
-I was not satisfied by this mere 30% improvement. What if the loop was unrolled, so that the CPU has more freedom to move instructions around ?
+I was not satisfied by this mere 45% improvement. What if the loop was unrolled, so that the CPU has more freedom to move instructions around ?
 
 ```ocaml
 let rec seum_unroll (previous : int) (accu : int) (cell : int list) =
@@ -199,7 +199,7 @@ Per iteration:
 - 2 branches
 
 <h1 style={{ fontSize: "4em", marginTop: "-50px", marginBottom: "-50px" }}>
-  <b>47.7%</b> faster. Nice.
+  <b>91.3%</b> faster. Nice.
 </h1>
 
 According the original article, we're now faster than the naive C implementation, but 2x slower than the hand-optimized one. This is all very synthetic but I found it quite interesting that OCaml is able to benefit from the same hacks as C. Of course this won't be useful in a lot of situations, but maybe one will gain some insights on how modern CPU are able to make programs go fast.
