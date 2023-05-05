@@ -1,7 +1,7 @@
 ---
 title: "Implementing value speculation in OCaml"
 slug: "value-speculation-ocaml"
-date: "2023-04-29"
+date: "2023-05-05"
 category: "misc"
 description: Value speculation exploits the CPU branch predictor to improve instruction parallelism. Here is an example of it in OCaml.
 variant: articles
@@ -58,7 +58,7 @@ Conveniently, we're doing one billion additions (10000 list items, repeated 100k
 - 9 instructions
 - 3 branches
 
-We can already see that the CPU is cramming multiple instructions per cycles.
+We can already see that the CPU is cramming multiple instructions per cycle.
 Using the [compiler explorer](https://godbolt.org/), the following assembly is obtained:
 
 ```nasm

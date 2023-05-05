@@ -150,7 +150,7 @@ const CustomLi = (props: {
 };
 
 import { MDXProvider } from "@mdx-js/react";
-import { Highlight, Prism } from "prism-react-renderer";
+import { Highlight, Prism, themes } from "prism-react-renderer";
 
 (typeof global !== "undefined" ? global : window).Prism = Prism;
 require("prismjs/components/prism-ocaml");
@@ -170,6 +170,7 @@ const component = {
             ? matches.groups.lang
             : "python"
         }
+        theme={themes.nightOwl}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre className={className} style={style} sx={{ padding: 2 }}>
