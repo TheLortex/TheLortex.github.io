@@ -110,22 +110,34 @@ the memory load of the next cell address is effectively bypassed, and the CPU ca
 directly start working on the next iteration. If not, the branch predictor rolls back the
 computation.{" "}
 
+```ocaml
+let current : int = Obj.magic cell in                   (* convert list cell to pointer (integer value) *)
+let delta : int = current - previous                    (* compute delta with previous pointer *)
+let prediction : int list = Obj.magic (current + delta) (* use delta to predict next pointer*) 
+```
+
 ![illustration of the delta computing mechanism ](./seum_delta_1.png)
 
+Here is the full program. Note that the delta calculation was inlined for performance reasons. 
+
+(`current + delta = current + (current - previous) = 2 * current - previous`)
+
 ```ocaml
-let rec sum (previous : int) (accu : int) (cell : int list) =
+let rec seum (previous : int) (accu : int) (cell : int list) =
   match cell with
   | [] -> accu
   | head::tail ->
     let current : int = Obj.magic cell in
-    let prediction : int list =
+    let prediction : int list = (* compute prediction *)
       Obj.magic (2 * current - previous)
     in
-    sum
+    seum
       current
       (accu + head)
-      (if prediction == tail then prediction else tail)
+      (if prediction == tail then prediction else tail) (* validate prediction *)
 ```
+
+The program is executed with the same input and...
 
 ```
  Performance counter stats for './a.out seum':
