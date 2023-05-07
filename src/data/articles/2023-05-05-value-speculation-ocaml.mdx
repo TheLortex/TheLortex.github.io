@@ -169,11 +169,11 @@ By moving the tail pointer load outside of the critical path, the CPU is able to
 ### The crux of the hack
 
 The astute reader will wonder how is it possible to use `Obj.magic` to transmute the `int list` to an `int`. Indeed these OCaml types have different representations. 
-- An `int list` is a pointer to an OCaml block allocated on the heap. Due to alignment, it always end by a zero bit.
+- An `int list` is a pointer to an OCaml block allocated on the heap. Due to alignment, it always end with a zero bit.
 - An `int` is a primitive OCaml value, the value `n` being represented as the _tagged integer_ `2 * n + 1`.
 
 This means that usual operations on `int` values won't work on raw pointers.
-For example, the addition is implemented as `Int.add a b = a + b - 1`. The consequence is that adding two raw numbers together using the OCaml addition would subtract one from the result to account for the expected tags. 
+For example, the addition is implemented as `Int.add a b = a + b - 1`. The consequence is that adding two raw numbers together using the OCaml addition will subtract one from the result to account for the expected tags. 
 
 For subtraction, it is similar: `Int.sub a b = a - b + 1`. 
 
