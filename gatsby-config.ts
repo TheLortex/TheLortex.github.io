@@ -3,7 +3,8 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Lucas Pluvinage`,
-    siteUrl: `https://lortex.org`,
+    description: "Lucas' personal website",
+    siteUrl: `https://www.lortex.org`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -38,12 +39,12 @@ const config: GatsbyConfig = {
             resolve: `gatsby-remark-katex`,
             options: {
               // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
-              strict: `ignore`
-            }
+              strict: `ignore`,
+            },
           },
           {
-            resolve: `remark-slug`
-          }
+            resolve: `remark-slug`,
+          },
         ],
       },
     },
@@ -89,6 +90,63 @@ const config: GatsbyConfig = {
     },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-plugin-feed",
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            title: "Lucas Pluvinage",
+            output: "/rss.xml",
+            query: `
+              {
+                allMdx(
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                ) {
+                  edges {
+                    node {
+                      frontmatter {
+                        slug
+                        variant
+                        description
+                        title
+                        date
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            serialize: ({ query: { site, allMdx } }) => {
+              console.log(site);
+              console.log(allMdx.toString());
+              return allMdx.edges
+                .filter(({ node }) => node.frontmatter.variant == "articles")
+                .map(({ node }) => {
+                  return {
+                    title: node.frontmatter.title,
+                    description: node.frontmatter.description,
+                    date: node.frontmatter.date,
+                    url: site.siteMetadata.siteUrl + "/articles/"  + node.frontmatter.slug,
+                    guid: site.siteMetadata.siteUrl + "/articles/" + node.frontmatter.slug,
+                  };
+                });
+            },
+          },
+        ],
+      },
+    },
   ],
 };
 
