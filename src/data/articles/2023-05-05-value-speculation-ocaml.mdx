@@ -166,6 +166,61 @@ By moving the tail pointer load outside of the critical path, the CPU is able to
 
 ![](./seum_chart_tiled.png)
 
+### The crux of the hack
+
+The astute reader will wonder how is it possible to use `Obj.magic` to transmute the `int list` to an `int`. Indeed these OCaml types have different representations. 
+- An `int list` is a pointer to an OCaml block allocated on the heap. Due to alignment, it always end by a zero bit.
+- An `int` is a primitive OCaml value, the value `n` being represented as the _tagged integer_ `2 * n + 1`.
+
+This means that usual operations on `int` values won't work on raw pointers.
+For example, the addition is implemented as `Int.add a b = a + b - 1`. The consequence is that adding two raw numbers together using the OCaml addition would subtract one from the result to account for the expected tags. 
+
+For subtraction, it is similar: `Int.sub a b = a - b + 1`. 
+
+The magic happens when we're combining an addition and a subtraction, so that the whole operation is correct on both pointers and integers:
+```ocaml
+Int.add current (Int.sub current previous) 
+  = current + (current - previous + 1) - 1
+  = current + (current - previous)
+```
+
+<details>
+<summary>Here is the full annotated assembly for the curious</summary>
+```nasm
+camlExample__seum_268:
+        subq    $8, %rsp
+.L103:
+        movq    %rax, %rsi
+        movq    %rdi, %rax
+        cmpq    (%r14), %r15           # check if GC is waiting for us
+        jbe     .L104                  # branch #1
+.L105:
+        testb   $1, %al                # check if at end of list
+        je      .L102                  # branch #2
+        movq    %rbx, %rax
+        addq    $8, %rsp
+        ret
+.L102:
+        movq    8(%rax), %rdx          # load tail element of list cell 
+        movq    %rax, %rdi             # move cell pointer to %rdi
+        salq    $1, %rdi               # multiply pointer by two
+        subq    %rsi, %rdi             # subtract previous cell pointer to obtain the prediction
+        cmpq    %rdx, %rdi             # compare tail element with prediction
+        jne     .L101
+        jmp     .L100
+.L101:
+        movq    %rdx, %rdi             # prediction is incorrect, move the tail element in %rdi
+.L100:
+        movq    (%rax), %rsi           # load head element of list cell
+        leaq    -1(%rbx,%rsi), %rbx    # add to accumulator
+        jmp     .L103                  # loop
+.L104:
+        call    caml_call_gc@PLT
+.L106:
+        jmp     .L105
+```
+</details>
+
 ### Optimized
 
 I was not satisfied by this mere 45% improvement. What if the loop was unrolled, so that the CPU has more freedom to move instructions around ?

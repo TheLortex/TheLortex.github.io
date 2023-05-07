@@ -24,3 +24,12 @@
     font-named-instance: 'Bold';
     src: url(/fonts/Lato-Bold.ttf) format("truetype");
 }
+
+@font-face {
+    font-family: 'Lato';
+    font-weight: 900;
+    font-display: swap;
+    font-style: normal;
+    font-named-instance: 'Black';
+    src: url(/fonts/Lato-Black.ttf) format("truetype");
+}

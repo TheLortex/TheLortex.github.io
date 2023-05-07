@@ -156,7 +156,47 @@ import { Highlight, Prism, themes } from "prism-react-renderer";
 require("prismjs/components/prism-ocaml");
 require("prismjs/components/prism-nasm");
 
+import type { ComponentPropsWithoutRef } from "react";
+import { Themed } from "@theme-ui/mdx";
+
+import BananaSlug from "github-slugger";
+
+const createHeadingWithLink =
+  (Level: "h2" | "h3" | "h4" | "h5" | "h6") =>
+  (props: ComponentPropsWithoutRef<"h2">) => {
+    const slugs = new BananaSlug();
+    const id = slugs.slug(props.children?.toString() || "");
+
+    if (id) {
+      return (
+        <Level {...props} id={id} sx={{ fontWeight: 900 }}>
+          <a
+            href={`#${id}`}
+            sx={{
+              color: "inherit",
+              textDecoration: "none",
+              ":hover": {
+                textDecoration: "underline",
+              },
+            }}
+          >
+            #{" "}
+          </a>
+          {props.children}
+        </Level>
+      );
+    } else {
+      return props.children;
+    }
+  };
+
 const component = {
+  h2: createHeadingWithLink("h2"),
+  h3: createHeadingWithLink("h3"),
+  h4: createHeadingWithLink("h4"),
+  h5: createHeadingWithLink("h5"),
+  h6: createHeadingWithLink("h6"),
+
   pre: (props: {
     children: { props: { className?: string; children: string } };
   }) => {
@@ -196,6 +236,8 @@ const pages = [
   { name: "articles", page: "articles", link: "/articles" },
   { name: "photography", page: "photography", link: "/photography" },
 ];
+
+require(`katex/dist/katex.min.css`);
 
 export const Layout = (props: {
   children?: React.ReactNode;
