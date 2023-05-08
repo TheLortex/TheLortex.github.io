@@ -78,7 +78,11 @@ const CustomLi = (props: {
       </div>
       {props.article && props.selected && (
         <div
-          sx={{ display: "flex", flexDirection: "row", alignItems: "stretch" }}
+          sx={{
+            display: ["none", "flex"],
+            flexDirection: "row",
+            alignItems: "stretch",
+          }}
         >
           <div
             sx={{
@@ -248,11 +252,21 @@ export const Layout = (props: {
   return (
     <main
       sx={{
-        paddingX: [3, 4],
+        paddingX: [0, 3, 4],
         paddingY: 2,
         paddingBottom: 4,
         a: {
           color: "secondary",
+        },
+        code: {
+          backgroundColor: "#0001",
+          border: "solid #0000 2px",
+          borderLeftWidth: "4px",
+          borderRightWidth: "4px",
+        },
+        pre: {
+          overflowX: "scroll",
+          borderRadius: 4,
         },
       }}
     >
@@ -260,6 +274,7 @@ export const Layout = (props: {
         sx={{
           maxWidth: "80ch",
           margin: "auto",
+          paddingX: [3, 0, 0],
         }}
       >
         <ul sx={{ display: "flex", flexDirection: "row", padding: 0 }}>
@@ -301,6 +316,27 @@ export const Layout = (props: {
             </CustomLi>
           ))}
         </ul>
+        {props.article && (
+          <div
+            sx={{
+              display: ["flex", "none"],
+              alignItems: "center",
+            }}
+          >
+            <h2
+              sx={{
+                margin: 0,
+                color: "secondary",
+                textDecoration: "underline",
+                textDecorationColor: "#FC4F00",
+                textDecorationThickness: "8px",
+                textDecorationSkipInk: "none",
+              }}
+            >
+              {props.article}
+            </h2>
+          </div>
+        )}
       </nav>
       <div
         sx={{

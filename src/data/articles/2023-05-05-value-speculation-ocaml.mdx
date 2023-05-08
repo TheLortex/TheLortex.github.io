@@ -113,12 +113,12 @@ computation.{" "}
 ```ocaml
 let current : int = Obj.magic cell in                   (* convert list cell to pointer (integer value) *)
 let delta : int = current - previous                    (* compute delta with previous pointer *)
-let prediction : int list = Obj.magic (current + delta) (* use delta to predict next pointer*) 
+let prediction : int list = Obj.magic (current + delta) (* use delta to predict next pointer*)
 ```
 
 ![illustration of the delta computing mechanism ](./seum_delta_1.png)
 
-Here is the full program. Note that the delta calculation was inlined for performance reasons. 
+Here is the full program. Note that the delta calculation was inlined for performance reasons.
 
 (`current + delta = current + (current - previous) = 2 * current - previous`)
 
@@ -168,18 +168,18 @@ By moving the tail pointer load outside of the critical path, the CPU is able to
 
 ### The crux of the hack
 
-The astute reader will wonder how is it possible to use `Obj.magic` to transmute the `int list` to an `int`. Indeed these OCaml types have different representations. 
+The astute reader will wonder how is it possible to use `Obj.magic` to transmute the `int list` to an `int`. Indeed these OCaml types have different representations.
 - An `int list` is a pointer to an OCaml block allocated on the heap. Due to alignment, it always end with a zero bit.
 - An `int` is a primitive OCaml value, the value `n` being represented as the _tagged integer_ `2 * n + 1`.
 
 This means that usual operations on `int` values won't work on raw pointers.
-For example, the addition is implemented as `Int.add a b = a + b - 1`. The consequence is that adding two raw numbers together using the OCaml addition will subtract one from the result to account for the expected tags. 
+For example, the addition is implemented as `Int.add a b = a + b - 1`. The consequence is that adding two raw numbers together using the OCaml addition will subtract one from the result to account for the expected tags.
 
-For subtraction, it is similar: `Int.sub a b = a - b + 1`. 
+For subtraction, it is similar: `Int.sub a b = a - b + 1`.
 
 The magic happens when we're combining an addition and a subtraction, so that the whole operation is correct on both pointers and integers:
 ```ocaml
-Int.add current (Int.sub current previous) 
+Int.add current (Int.sub current previous)
   = current + (current - previous + 1) - 1
   = current + (current - previous)
 ```
@@ -201,7 +201,7 @@ camlExample__seum_268:
         addq    $8, %rsp
         ret
 .L102:
-        movq    8(%rax), %rdx          # load tail element of list cell 
+        movq    8(%rax), %rdx          # load tail element of list cell
         movq    %rax, %rdi             # move cell pointer to %rdi
         salq    $1, %rdi               # multiply pointer by two
         subq    %rsi, %rdi             # subtract previous cell pointer to obtain the prediction
@@ -270,5 +270,5 @@ According the original article, we're now faster than the naive C implementation
 
 ---
 
-If you like this article I'd be glad to have your feedback. 
-Public discussion on [Twitter](https://twitter.com/TheLortex/status/1654563811569836032)
+If you like this article I'd be glad to have your feedback.
+Public discussion on [Twitter](https://twitter.com/TheLortex/status/1654563811569836032), [Hacker News](https://news.ycombinator.com/item?id=35844078).

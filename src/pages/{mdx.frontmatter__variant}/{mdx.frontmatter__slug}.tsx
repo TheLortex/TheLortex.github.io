@@ -20,7 +20,16 @@ const Projects = (props: PageProps<Queries.ProjectQuery>) => {
       page={props.data.mdx?.frontmatter?.variant!}
       article={props.data.mdx?.frontmatter?.title}
     >
-      <div sx={{ padding: [1, 3] }}>
+      <div sx={{ padding: [0, 1, 3] }}>
+        <div
+          sx={{
+            fontStyle: "italic",
+            fontSize: 1,
+            padding: [1, 0, 0]
+          }}
+        >
+          {props.data.mdx?.frontmatter?.date}
+        </div>
         <div
           sx={{
             borderLeft: "solid " + backgroundColor + " 8px",
