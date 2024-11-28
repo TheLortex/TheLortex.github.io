@@ -1,0 +1,196 @@
+/*
+ * Name: Plain
+ * Version: 2.0
+ * Author: John Godley
+ */
+
+body { background-color: #eeeef5 }
+
+#pagenav, #pagenav ul li a, .page_item { background: none !important; color: #444 }
+
+#wrapper { border: none }
+
+.widecontent h2
+{
+border-bottom: 1px solid #a8a8a8;
+}
+
+.widecontent h3 a
+{
+color: #4c4c4c;
+}
+
+.nobar
+{
+background: none !important;
+}
+
+h2.narrowheading
+{
+color: #4c4c4c;
+}
+
+#inset
+{
+color: #959595;
+}
+
+#inset h2
+{
+color: #4c4c4c;
+}
+
+a.author
+{
+color: #4c4c4c !important;
+}
+
+.widecontent a, #inset a
+{
+color: red;
+}
+
+#content h2 a
+{
+color: #4c4c4c !important;
+}
+
+.postmetadata a
+{
+color: #959595 !important;
+}
+
+.postmetadata a:hover { color :red !important }
+
+.postmetadata
+{
+color: #959595;
+}
+
+div.hr
+{
+color: #c9c9c9;
+background-color: #c9c9c9;
+}
+
+#headerimg a
+{
+color: #4c4c4c;
+}
+
+.linkbar ul li a, .linkbar ul li p
+{
+color: #333;
+}
+
+.linkbar ul li a:hover, .linkbar .active
+{
+background-color: #4c4c4c;
+color: #333;
+}
+
+ol.commentlist li
+{
+border-bottom: 1px solid #959595;
+}
+
+.commentlist p a, .post a
+{
+color: red;
+}
+
+h2 a
+{
+color: #4c4c4c !important;
+}
+
+h2 a:hover { color: red !important }
+
+.sidebar
+{
+color: #4c4c4c;
+}
+
+.sidebar a:hover
+{
+color: red;
+}
+
+.sidebar ul li
+{
+border-bottom: 1px dashed #ddd;
+}
+
+.sidebar ul li ul li { border: none }
+
+.sidebar h2
+{
+color: #4c4c4c;
+}
+
+.sidebar a, #searchform, #searchsubmit, #s
+{
+color: #4c4c4c;
+text-decoration: none;
+}
+
+#wp-calendar
+{
+}
+
+.narrowheading { padding-left: 0 !important; margin-left: 0 }
+#wp-calendar caption a, #wp-calendar caption a:hover
+{
+color: #4c4c4c;
+}
+
+#wp-calendar a
+{
+border: 1px solid #a8a8a8;
+}
+
+#wp-calendar a:hover
+{
+border: 1px solid #a8a8a8;
+background-color: #4c4c4c;
+color: #bdbdbd;
+}
+
+#wp-calendar caption
+{
+color: #4c4c4c;
+}
+
+a.java
+{
+color: red;
+}
+
+.gravatar
+{
+border: 1px solid #c9c9c9;
+}
+
+img.author
+{
+border: 1px solid red;
+}
+
+
+.commentmetadata, .commentmetadata a
+{
+color: #959595;
+}
+
+.commentlist h4, .commentlist h4 a, .commentlist cite
+{
+color: #4c4c4c;
+}
+
+
+
+/* quentin */
+#today {
+border: 1px solid #a8a8a8;
+font-weight:bold;
+}

@@ -1,0 +1,13 @@
+#ub-fu{text-align:center;}#ub-fu > *{vertical-align:top;}#ub-fu .unbl-links{display:inline-block;}#ub-fu .unbl-prev{text-align:right;}#ub-fu .unbl-next{text-align:left;}#goToTop{position:fixed;width:26px;height:26px;bottom:20px;right:10px;cursor:pointer;z-index:1000;background:url(http://4.cdnblog.fr/wp-content/themes/mynewtheme/images/up_down_cat.png) no-repeat scroll 0 0 transparent;}#goToTop:hover{background:url(http://4.cdnblog.fr/wp-content/themes/mynewtheme/images/up_down_cat.png) no-repeat scroll 0 -26px transparent;}
+#ub-f{position:relative;float:none;clear:both}
+#unblcn{position:fixed;box-sizing:border-box;width:100%;min-height:30px;background-color:white;left:0;top:0;margin:0;padding:0;border:1px solid #383838;font-size:12px;font-family:Arial,Sans-Serif;z-index: 150001;}
+#unblcn p{margin:0 auto;padding:5px 35px 5px 10px;line-height:initial;text-align:center;position:relative;}
+#unblcn p,#unblcn a{color:#383838;font-size: 12px;}
+#unblcn a{text-decoration:underline;}
+#unblcn button{display:block;margin-top:-1px;*margin-top:-14px;padding:1px 6px;position:absolute;right:10px;top:5px;background-color:#383838;color:white;cursor:pointer;border:1px solid #383838;}
+#unblcn button:hover{float:right;background-color:white;color:#383838;}
+@media (max-width:767px){
+#unblcn{top:auto;bottom:0;}
+}
+.ubclickable{border:1px dashed #e6db55;margin-bottom:5px;}
+.ubclickable > .toggle-state{cursor:pointer;vertical-align: text-bottom;}
