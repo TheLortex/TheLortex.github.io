@@ -252,7 +252,7 @@ export const Layout = (props: {
   return (
     <main
       sx={{
-        paddingX: [0, 3, 4],
+        paddingX: [2, 3, 4],
         paddingY: 2,
         paddingBottom: 4,
         a: {

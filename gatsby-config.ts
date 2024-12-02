@@ -17,7 +17,6 @@ const config: GatsbyConfig = {
         preset: "@theme-ui/preset-funk",
       },
     },
-    "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
     {
       resolve: "gatsby-plugin-manifest",
@@ -88,7 +87,7 @@ const config: GatsbyConfig = {
       },
       __key: "pics",
     },
-    "gatsby-plugin-sharp",
+    `gatsby-plugin-sharp`,
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-plugin-feed",
@@ -138,8 +137,14 @@ const config: GatsbyConfig = {
                     title: node.frontmatter.title,
                     description: node.frontmatter.description,
                     date: node.frontmatter.date,
-                    url: site.siteMetadata.siteUrl + "/articles/"  + node.frontmatter.slug,
-                    guid: site.siteMetadata.siteUrl + "/articles/" + node.frontmatter.slug,
+                    url:
+                      site.siteMetadata.siteUrl +
+                      "/articles/" +
+                      node.frontmatter.slug,
+                    guid:
+                      site.siteMetadata.siteUrl +
+                      "/articles/" +
+                      node.frontmatter.slug,
                   };
                 });
             },

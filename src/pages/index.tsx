@@ -8,7 +8,7 @@ import { Layout } from "../components/Layout";
 
 import Piticha from "../images/piticha.jpg";
 import Furets from "../images/furets.jpg";
-import CV from "../data/CV_funky.pdf";
+import CV from "../data/CV_standard.pdf";
 import { SiteHead } from "../components/Head";
 
 const IndexPage: React.FC<PageProps> = (props: PageProps) => {
@@ -48,26 +48,7 @@ const IndexPage: React.FC<PageProps> = (props: PageProps) => {
           <Avatar />
         </div>
         <div sx={{ flex: 1 }}>
-          <p>
-            Freshly of the{" "}
-            <a id="link-ens" href="https://diplome.di.ens.fr">
-              École Normale Supérieure of Paris
-            </a>{" "}
-            and graduating from PSL's{" "}
-            <a
-              id="link-iasd"
-              href="https://www.lamsade.dauphine.fr/wp/iasd/en/"
-              title="AI Systems and Data Science"
-            >
-              IASD
-            </a>{" "}
-            Master programme, I'm now working with the{" "}
-            <a id="link-tarides" href="https://tarides.com">
-              Tarides
-            </a>{" "}
-            software company on open-source projects using the{" "}
-            <a href="https://ocaml.org">OCaml</a> programming language.
-          </p>
+          <p>Welcome to my corner on the Internet.</p>
           <p>
             My interests range from artificial intelligence to low-level
             compiler hacking. Coming from a research education environment along
@@ -75,15 +56,38 @@ const IndexPage: React.FC<PageProps> = (props: PageProps) => {
             challenge with a practical mindset.
           </p>
           <p>
-            Other interests include{" "}
-            <a id="link-cat" href={Piticha}>
-              cats
-            </a>
-            ,{" "}
-            <a id="link-furets" href={Furets}>
-              ferrets
-            </a>
-            , and <Link to="/photography">photography</Link>.
+            I'm a graduate of the{" "}
+            <a id="link-ens" href="https://diplome.di.ens.fr">
+              École Normale Supérieure of Paris
+            </a>{" "}
+            and PSL's{" "}
+            <a
+              id="link-iasd"
+              href="https://www.lamsade.dauphine.fr/wp/iasd/en/"
+              title="AI Systems and Data Science"
+            >
+              IASD
+            </a>{" "}
+            Master programme. My first software engineering role started in 2019
+            at{" "}
+            <a id="link-tarides" href="https://tarides.com">
+              Tarides
+            </a>{" "}
+            working open-source projects using the{" "}
+            <a href="https://ocaml.org">OCaml</a> programming language.
+            Beginning 2023, I've decided to dive in the realm of{" "}
+            <i>consumer social applications</i>. I went through{" "}
+            <a href="https://joinef.com">EntrepreneurFirst</a>'s Graduate
+            Programme selection process before dropping it to join{" "}
+            <a href="https://amo.co">
+              <b>amo</b>
+            </a>{" "}
+            in May 2023.
+          </p>
+          <p>
+            This is almost 2025, and I have chosen now to explore on my own. I
+            am obsessed by the intersection of memories, collaboration, personal
+            data & novel user interfaces. We'll see where it brings me.
           </p>
         </div>
       </div>
@@ -94,7 +98,7 @@ const IndexPage: React.FC<PageProps> = (props: PageProps) => {
           paddingTop: [0, 3],
         }}
       >
-        <h1>here are some projects I'm working on</h1>
+        <h1>here are some projects I've been working on</h1>
       </div>
       <div
         sx={{
@@ -109,7 +113,8 @@ const IndexPage: React.FC<PageProps> = (props: PageProps) => {
           sx={{
             flex: 1,
             minWidth: "20ch",
-            backgroundColor: "#B5A8FF",
+            background:
+              "linear-gradient(#B5A8FFA0, #B5A8FFA0), url(/img/noise.svg)",
             padding: 3,
             paddingY: 3,
             borderRadius: 8,
@@ -118,7 +123,7 @@ const IndexPage: React.FC<PageProps> = (props: PageProps) => {
             gap: 2,
           }}
         >
-          <h2 sx={{ margin: 0, textAlign: "center" }}> Forevr </h2>
+          <h2 sx={{ margin: 0, textAlign: "center" }}> One day, maybe</h2>
           <p sx={{ marginY: "auto" }}>
             A collaborative social journal, providing a safe space to keep track
             of your memories.
@@ -128,7 +133,8 @@ const IndexPage: React.FC<PageProps> = (props: PageProps) => {
           sx={{
             flex: 1,
             minWidth: "15ch",
-            backgroundColor: "#FFB4B4",
+            background:
+              "linear-gradient(#FFB4B4A0, #FFB4B4A0), url(/img/noise.svg)",
             padding: 3,
             paddingY: 3,
             borderRadius: 8,
@@ -147,7 +153,8 @@ const IndexPage: React.FC<PageProps> = (props: PageProps) => {
           sx={{
             flex: 1,
             minWidth: "15ch",
-            backgroundColor: "#FFDEB4",
+            background:
+              "linear-gradient(#FFDEB4A0, #FFDEB4A0), url(/img/noise.svg)",
             padding: 3,
             paddingY: 3,
             borderRadius: 8,
@@ -166,7 +173,8 @@ const IndexPage: React.FC<PageProps> = (props: PageProps) => {
           sx={{
             flex: 1,
             minWidth: "15ch",
-            backgroundColor: "#FDF7C3",
+            background:
+              "linear-gradient(#FDF7C3A0, #FDF7C3A0), url(/img/noise.svg)",
             padding: 3,
             paddingY: 3,
             borderRadius: 8,
@@ -177,8 +185,8 @@ const IndexPage: React.FC<PageProps> = (props: PageProps) => {
         >
           <h2 sx={{ margin: 0, textAlign: "center" }}>Pixel stick</h2>
           <p sx={{ marginY: "auto" }}>
-            Basically an LED strip on a stick, allowing to draw images in the
-            air with a long exposure camera.
+            Basically a LED strip on a stick, allowing to draw images in the air
+            with a long exposure camera.
           </p>
         </div>
       </div>
@@ -219,6 +227,19 @@ const IndexPage: React.FC<PageProps> = (props: PageProps) => {
         </Pill>
         <Pill href={CV} id="CV" />
       </div>
+      <p>
+        <i>
+          Other interests include{" "}
+          <a id="link-cat" href={Piticha}>
+            cats
+          </a>
+          ,{" "}
+          <a id="link-furets" href={Furets}>
+            ferrets
+          </a>
+          , and <Link to="/photography">photography</Link>.
+        </i>
+      </p>
     </Layout>
   );
 };

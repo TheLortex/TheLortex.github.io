@@ -8,7 +8,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import ReactMarkdown from "react-markdown";
 import { SiteHead } from "../components/Head";
 
-export const tagsColor = {
+const intagsColor = {
   forevr: "#B5A8FF",
   systems: "#FFB4B4",
   ocaml: "#FFDEB4",
@@ -16,6 +16,13 @@ export const tagsColor = {
   hardware: "#FDF7C3",
   default: "#c8c8ff",
 };
+
+export const tagsColor = Object.fromEntries(
+  Object.entries(intagsColor).map(([key, value]) => [
+    key,
+    "linear-gradient(" + value + "A0, " + value + "A0), url(/img/noise.svg)",
+  ])
+);
 
 const Projects = (props: PageProps<Queries.ProjectsQuery>) => {
   const groups = [...props.data.allFile.group];
@@ -65,16 +72,18 @@ const Projects = (props: PageProps<Queries.ProjectsQuery>) => {
                       padding: "1rem",
                       flex: 1,
                       margin: 2,
-                      maxWidth: fm.hero_image ? "450px" : "300px",
+                      maxWidth: fm.hero_image ? "500px" : "300px",
                       minWidth: "200px",
                       borderTopRightRadius: 24,
                       borderBottomRightRadius: 24,
-                      backgroundColor:
-                        (tagsColor[(fm.tags ?? ["default"])[0]] ??
-                          tagsColor.default) + "40",
+                      background:
+                        tagsColor[(fm.tags ?? ["default"])[0]] ??
+                        tagsColor.default,
                       borderLeft:
-                        "solid " + (tagsColor[(fm.tags ?? ["default"])[0]] ??
-                          tagsColor.default) + " 8px",
+                        "solid " +
+                        (intagsColor[(fm.tags ?? ["default"])[0]] ??
+                          intagsColor.default) +
+                        " 8px",
                     }}
                   >
                     <div
@@ -92,7 +101,7 @@ const Projects = (props: PageProps<Queries.ProjectsQuery>) => {
                             alignSelf: "center",
                             borderRadius: 8,
                             overflow: "hidden",
-                            maxWidth: "50%",
+                            maxWidth: "200px",
                           }}
                         >
                           <GatsbyImage
